@@ -9,6 +9,8 @@ import { post } from '../../utils/paytm';
 import { payUsingPaytm } from '../../service/api';
 
 const useStyle = makeStyles(theme => ({
+
+    
     component: {
         // marginTop: 55,
         padding: '30px 135px',
