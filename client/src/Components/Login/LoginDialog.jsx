@@ -114,13 +114,14 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
 
     const loginUser = async() => {
         let response = await authenticateLogin(login);
-        // if(!response) 
-        //     showError(true);
-        // else {
-            // showError(false);
+        console.log(login);
+        if(!response) 
+            showError(true);
+        else {
+            showError(false);
             handleClose();
             setAccount(login.username);
-        // }
+        }
     }
 
     const signupUser = async() => {
@@ -150,22 +151,23 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                     {
                         account.view === 'login' ? 
                         <Box className={classes.login}>
-                            <TextField onChange={(e) => onValueChange(e)} name='username' label='Enter Email/Mobile number' />
+                            <TextField onChange={(e) => onValueChange(e)} name='email' label='Enter Email/Mobile number' />
                             { error && <Typography className={classes.error}>Please enter valid Email ID/Mobile number</Typography> }
                             <TextField onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
                             <Typography className={classes.text}>By continuing, you agree to Cozmolane's Terms of Use and Privacy Policy.</Typography>
                             <Button className={classes.loginbtn} onClick={() => loginUser()} >Login</Button>
                             <Typography className={classes.text} style={{textAlign:'center'}}>OR</Typography>
                             <Button className={classes.requestbtn}>Request OTP</Button>
-                            <Typography className={classes.createText} >New to Cozmolane? Create an account</Typography>
+                            <Typography className={classes.createText} onClick={() => toggleSignup()} >New to Cozmolane? Create an account</Typography>
                         </Box> : 
                         <Box className={classes.login}>
-                            <TextField onChange={(e) => onInputChange(e)} name='firstname' label='Enter Firstname' />
-                            <TextField onChange={(e) => onInputChange(e)} name='lastname' label='Enter Lastname' />
+                            <TextField onChange={(e) => onInputChange(e)} name='firstName' label='Enter Firstname' />
+                            <TextField onChange={(e) => onInputChange(e)} name='lastName' label='Enter Lastname' />
                             <TextField onChange={(e) => onInputChange(e)} name='username' label='Enter Username' />
                             <TextField onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
                             <TextField onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
-                            <TextField onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' />
+                            <TextField onChange={(e) => onInputChange(e)} name='gender' label='Enter Gender' />
+                            {/* <TextField onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' /> */}
                             <Button className={classes.loginbtn} onClick={() => signupUser()} >Continue</Button>
                         </Box>
                     }

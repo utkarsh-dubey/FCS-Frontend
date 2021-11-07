@@ -65,9 +65,9 @@ const Search = () => {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e) => getText(e.target.value)}
             />
-            {/* <div className={classes.searchIcon}>
+            <div className={classes.searchIcon}>
               <SearchIcon />
-            </div> */}
+            </div>
             {/* {
               text && 
               <List className={classes.list} hidden={open}>

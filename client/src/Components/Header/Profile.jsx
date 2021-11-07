@@ -32,7 +32,7 @@ const Profile = ({ account, setAccount }) => {
     return (
         <>
             <Link onClick={handleClick}><Typography style={{ marginTop: 2 }}>{account}</Typography></Link>
-            {/* <Menu
+            <Menu
                 anchorEl={open}
                 open={Boolean(open)}
                 onClose={handleClose}
@@ -42,7 +42,7 @@ const Profile = ({ account, setAccount }) => {
                     <PowerSettingsNew fontSize='small' color='primary'/> 
                     <Typography className={classes.logout}>Logout</Typography>
                 </MenuItem>
-            </Menu> */}
+            </Menu>
         </>
     )    
 }
