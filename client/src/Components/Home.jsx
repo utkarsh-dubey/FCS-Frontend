@@ -7,6 +7,7 @@ import Slide from './Home/Slide';
 import React,  { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'; // hooks
 import { getProducts as listProducts } from '../redux/actions/productActions';
+import Products from './Home/Products';
 
 const useStyle = makeStyles({
     component: {
@@ -19,6 +20,7 @@ const Home = () => {
     const classes = useStyle();
 
     const getProducts = useSelector(state => state.getProducts);
+
     const { products, error } = getProducts;
 
     const dispatch = useDispatch();
@@ -30,11 +32,18 @@ const Home = () => {
     return (
         <>
             {/* <NavBar /> */}
+            <Products />
             <Box className={classes.component}>
                 {/* <Banner /> */}
                 <MidSlide products={products} />
                 {/* <MidSection /> */}
                 <Slide
+                    data={products} 
+                    title='All products'
+                    timer={false} 
+                    multi={true} 
+                />
+                {/* <Slide
                     data={products} 
                     title='Discounts for You'
                     timer={false} 
@@ -57,7 +66,7 @@ const Home = () => {
                     title='Recommended Items'
                     timer={false} 
                     multi={true} 
-                />
+                /> */}
             </Box>
         </>
     )
