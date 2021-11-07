@@ -21,16 +21,22 @@ export const authenticateSignup = async (user) => {
 
 export const getProductById = async (id) => {
     try {
-        return await axios.get(`${url}/product/${id}`);
+        return await axios.get(`${url}/product/:${id}`);
     } catch (error) {
         console.log('Error while getting product by id response', error);
     }
 }
-
+export const getProducts = async () => {
+    try {
+        return await axios.get(`${url}/product/`);
+    } catch (error) {
+        console.log('Error while getting product by id response', error);
+    }
+}
 export  const payUsingPaytm = async (data) => {
     try {
         console.log('payment api');
-        let response = await axios.post(`${url}/payment`, data);
+        let response = await axios.post(`${url}/payment/checkout`, data);
         console.log(response.data);
         return response.data;
     } catch (error) {
