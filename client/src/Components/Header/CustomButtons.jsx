@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { makeStyles, Box, Typography, Badge, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from '@material-ui/icons';
+import {useEffect} from "react";
 import LoginDialog from '../Login/LoginDialog';
 import { LoginContext } from '../../context/ContextProvider';
 import { useSelector } from 'react-redux';
@@ -59,10 +60,16 @@ const CustomButtons = () => {
 
     const cartDetails = useSelector(state => state.cart);
     const { cartItems } = cartDetails;
-
+    useEffect(() => {
+         
+        var userkiid=localStorage.getItem("firstName");
+        if(userkiid)
+            setAccount(userkiid);
+      }, []);
     const openDialog = () => {
         setOpen(true);
     }
+
 
     return (
         <Box className={classes.wrapper}>

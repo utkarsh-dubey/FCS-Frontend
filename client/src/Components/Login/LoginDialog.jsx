@@ -111,16 +111,18 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     const onInputChange = (e) => {
         setSignup({ ...signup, [e.target.name]: e.target.value });
     }
-
+    
     const loginUser = async() => {
         let response = await authenticateLogin(login);
-        console.log(login);
         if(!response) 
             showError(true);
         else {
             showError(false);
             handleClose();
-            setAccount(login.username);
+            console.log(response);
+            localStorage.setItem("auth_token",response.data.auth_token);
+            localStorage.setItem("firstName",response.data.user.firstName);
+            setAccount(response.data.user.firstName);
         }
     }
 

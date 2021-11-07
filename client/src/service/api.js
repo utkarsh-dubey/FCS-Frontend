@@ -37,3 +37,7 @@ export  const payUsingPaytm = async (data) => {
         console.log('error', error);
     }
 }
+
+// {
+//     headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}` }
+// }

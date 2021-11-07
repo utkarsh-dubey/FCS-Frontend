@@ -27,6 +27,7 @@ const Profile = ({ account, setAccount }) => {
 
     const logout = () => {
         setAccount('');
+        localStorage.clear();
     }
     
     return (
