@@ -99,6 +99,7 @@ console.log("cartvalue",cart);
 //   console.log("acchaaccha")
   console.log("qwerty",itemDetail._id)
     return(
+
         <Card >
       <CardHeader
         avatar={
@@ -193,6 +194,8 @@ console.log("cartvalue",cart);
     </Card>
   );
     
+
+
 }
 
 export default ItemDetail;

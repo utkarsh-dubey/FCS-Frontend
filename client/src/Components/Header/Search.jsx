@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, fade, InputBase, List, ListItem } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux'; // hooks
-import { getProducts as listProducts } from '../../redux/actions/productActions';
+// import { useSelector, useDispatch } from 'react-redux'; // hooks
+// import { getProducts as listProducts } from '../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
+import { getProducts } from '../../service/api';
 
 const useStyle = makeStyles(theme => ({
     search: {
@@ -45,14 +46,33 @@ const Search = () => {
         setOpen(false)
     }
 
-    const getProducts = useSelector(state => state.getProducts);
-    const { products } = getProducts;
+    // const getProducts = useSelector(state => state.getProducts);
+    // const getProducts = getProducts();
+    // const { products } = getProducts;
+    // const dispatch = useDispatch();
+    
+    const [products, setProducts] = useState([]);
 
-    const dispatch = useDispatch();
-
+    const fetchProducts = async() => {
+      let { data } = await getProducts();
+      // if(!response) 
+      //     showError(true);
+      // else {
+      //     showError(false);
+      //     handleClose();
+      setProducts(data);
+      console.log(data);
+  
+  }
+    // console.log(response);
+  
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+      fetchProducts();
+    }, []);
+
+    // useEffect(() => {
+    //     dispatch(listProducts())
+    // }, [dispatch])
 
     return (
         <div className={classes.search}>
@@ -68,24 +88,24 @@ const Search = () => {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            {/* {
+            {
               text && 
               <List className={classes.list} hidden={open}>
                 {
-                  products.filter(product => product.title.longTitle.toLowerCase().includes(text.toLowerCase())).map(product => (
+                  products.filter(product => product.name.toLowerCase().includes(text.toLowerCase())).map(product => (
                     <ListItem>
                       <Link 
-                        to={`/product/${product.id}`} 
+                        to={`/product/${product._id}`} 
                         style={{ textDecoration:'none', color:'inherit'}}
                         onClick={() => setOpen(true)}  
                       >
-                        {product.title.longTitle}
+                        {product.name}
                       </Link>
                     </ListItem>
                   ))
                 }  
               </List>
-            } */}
+            }
         </div>
     )
 }
