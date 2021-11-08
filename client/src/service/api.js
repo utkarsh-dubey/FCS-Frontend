@@ -26,11 +26,11 @@ export const getProductById = async (id) => {
         console.log('Error while getting product by id response', error);
     }
 }
-export const getProducts = async () => {
+export const getProducts = async (word) => {
     try {
-        return await axios.get(`${url}/product`);
+        return await axios.get(`${url}/product?search=${word}`);
     } catch (error) {
-        console.log('Error while getting product by id response', error);
+        console.log('Error while getting products response', error);
     }
 }
 
@@ -38,14 +38,14 @@ export const addItemToCart= async (item) => {
     try {
         return await axios.post(`${url}/cart/add`, item)
     } catch (error) {
-        console.log('error while calling Signup API: ', error);
+        console.log('error while calling Add to Cart API: ', error);
     }
 }
 export const showCart= async (id) => {
     try {
-        return await axios.get(`${url}/cart/:${id}`)
+        return await axios.get(`${url}/cart/${id}`)
     } catch (error) {
-        console.log('error while calling Signup API: ', error);
+        console.log('error while calling Show cart API: ', error);
     }
 }
 

@@ -5,6 +5,7 @@ import { makeStyles, fade, InputBase, List, ListItem } from '@material-ui/core';
 // import { getProducts as listProducts } from '../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../../service/api';
+import Products from '../Home/Products';
 
 const useStyle = makeStyles(theme => ({
     search: {
@@ -65,7 +66,7 @@ const Search = () => {
   
   }
     // console.log(response);
-  
+    console.log("textt",text)
     useEffect(() => {
       fetchProducts();
     }, []);
@@ -85,9 +86,16 @@ const Search = () => {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e) => getText(e.target.value)}
             />
-            <div className={classes.searchIcon}>
+            {
+              text &&
+            
+            <Link to={{ pathname: '/product', searchu : {searchitem: text}}}>
+            
+            <div className={classes.searchIcon} >
               <SearchIcon />
             </div>
+            </Link>
+            }
             {
               text && 
               <List className={classes.list} hidden={open}>

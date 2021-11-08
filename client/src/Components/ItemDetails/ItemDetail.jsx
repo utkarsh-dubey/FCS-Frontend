@@ -80,7 +80,7 @@ const addToCart = async() => {
     // console.log("productid",productid,itemDetail)
    
     // console.log("cartvalue",cart);
-    let response = await addItemToCart(cart);
+    let response = await addItemToCart(payload);
 
     // setItemDetail(data);
 //    console.log(response);

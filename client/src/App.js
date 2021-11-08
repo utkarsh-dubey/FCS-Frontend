@@ -8,6 +8,7 @@ import Cart from './Components/Cart/Cart';
 import Products from './Components/Home/Products';
 import ItemDetail  from './Components/ItemDetails/ItemDetail';
 import { Box } from '@material-ui/core'
+import CartView from './Components/Cart/CartView'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Box style={{marginTop: 54}}>
             <Switch>
               <Route exact path= '/' component={Home} />
-              <Route exact path= '/cart' component={Cart} />
+              <Route exact path= '/cart' component={CartView} />
               <Route exact path= '/product' component={Products} />
               <Route exact path= '/product/:id' component={ItemDetail} />
               <Route component={NotFound} />

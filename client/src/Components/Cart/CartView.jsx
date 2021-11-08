@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts } from '../../service/api';
+import { getProducts, showCart } from '../../service/api';
 import { Box, Typography, makeStyles, CircularProgress, Button, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -52,29 +52,28 @@ const useStyles = makeStyles(theme => ({
 //   discount: '', 
 //   tagline: '' 
 // };
-const Products = (props) => {
-  const [products, setProducts] = useState([]);
-  const [searchWord,setSearchWord] = useState("");
+const CartView = () => {
+  const [cartProducts, setCartProducts] = useState([]);
+//   const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
-  const fetchProducts = async() => {
-    let { data } = await getProducts(searchWord);
-    setProducts(data);
+  const fetchCartProducts = async() => {
+    let  data  = await showCart(localStorage.getItem("userId"));
+    setCartProducts(data);
    console.log(data);
         
 }
   
 
   useEffect(() => {
-    // console.log("prop passing",props)
-    // props?.props.location?.props.location.searchu?.setSearchWord(props.location.searchu)
-    fetchProducts();
+  
+    fetchCartProducts();
   }, []);
   // renderTrails = () => {
-    console.log("TRAILS", products)
-    if(products){
-      const trail= products.map(t => {
+    console.log("TRAILS", cartProducts)
+    if(cartProducts){
+      const trail= cartProducts.map(t => {
         return(
-          <Link to={`product/${t._id}`} style={{textDecoration: 'none'}}>
+        //   <Link to={`product/${t._id}`} style={{textDecoration: 'none'}}>
             <div className="card" style={{width: 30 + 'rem' }} >
               {/* <img className="card-img-top" src={t.imgSqSmall ? ( t.imgSqSmall) : ("http://appalachiantrail.org/images/default-source/default-album/trailfocus.jpg?sfvrsn=2")} /> */}
                 <div className="card-body">
@@ -93,7 +92,7 @@ const Products = (props) => {
               </ul> */}
               </div>
           </div>
-          </Link>
+        //   </Link>
         )
       })
       return(
@@ -102,6 +101,9 @@ const Products = (props) => {
         </div>
       )
     }
+    return(
+        <div></div>
+    )
   }
   // return (
     // <div>
@@ -120,4 +122,4 @@ const Products = (props) => {
 //   );
 // }
 
-export default Products;
+export default CartView;
