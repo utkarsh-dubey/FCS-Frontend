@@ -27,23 +27,25 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(listProducts())
+        console.log("opop")
+        console.log(products)
     }, [dispatch])
 
     return (
         <>
-            {/* <NavBar /> */}
+            <NavBar />
             <Products />
             <Box className={classes.component}>
-                {/* <Banner /> */}
+                <Banner />
                 <MidSlide products={products} />
-                {/* <MidSection /> */}
+                <MidSection />
                 <Slide
                     data={products} 
                     title='All products'
                     timer={false} 
                     multi={true} 
                 />
-                {/* <Slide
+                <Slide
                     data={products} 
                     title='Discounts for You'
                     timer={false} 
@@ -66,7 +68,7 @@ const Home = () => {
                     title='Recommended Items'
                     timer={false} 
                     multi={true} 
-                /> */}
+                />
             </Box>
         </>
     )
