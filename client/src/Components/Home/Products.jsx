@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProducts } from '../../service/api';
 import { Box, Typography, makeStyles, CircularProgress, Button, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Axios from "axios";
 const useStyles = makeStyles(theme => ({
@@ -72,7 +72,7 @@ const Products = () => {
     // }
 }
   // console.log(response);
-
+  
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -82,7 +82,8 @@ const Products = () => {
       const trail= products.map(t => {
         return(
           <Link to={`product/${t._id}`} style={{textDecoration: 'none'}}>
-            <div className="card" style={{width: 30 + 'rem' }} >
+            <div className="card text-center">
+            <div className="card" className= "card text-black border-dark mb-3" style={{width: 75 + 'rem' }} >
               {/* <img className="card-img-top" src={t.imgSqSmall ? ( t.imgSqSmall) : ("http://appalachiantrail.org/images/default-source/default-album/trailfocus.jpg?sfvrsn=2")} /> */}
                 <div className="card-body">
                   <h1 className="card-title">{t.name}</h1>
@@ -99,6 +100,7 @@ const Products = () => {
               <li className="list-group-item"><a href={t.url} target="_blank" rel="noopener noreferrer" className="card-link">Trail Information</a></li> */}
               {/* </ul> */}
               </div>
+          </div>
           </div>
           </Link>
         )

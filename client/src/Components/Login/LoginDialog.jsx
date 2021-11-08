@@ -58,7 +58,7 @@ const useStyle = makeStyles({
         cursor: 'pointer'
     },
     error: {
-        fontSize: 10,
+        fontSize: 12,
         color: '#ff6161',
         lineHeight: 0,
         marginTop: 10,
@@ -158,8 +158,8 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                     {
                         account.view === 'login' ? 
                         <Box className={classes.login}>
-                            <TextField onChange={(e) => onValueChange(e)} name='email' label='Enter Email/Mobile number' />
-                            { error && <Typography className={classes.error}>Please enter valid Email ID/Mobile number</Typography> }
+                            <TextField onChange={(e) => onValueChange(e)} name='email' label='Enter Email' />
+                            { error && <Typography className={classes.error}>Please enter valid Email ID/Password</Typography> }
                             <TextField onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
                             <Typography className={classes.text}>By continuing, you agree to Cozmolane's Terms of Use and Privacy Policy.</Typography>
                             <Button className={classes.loginbtn} onClick={() => loginUser()} >Login</Button>
