@@ -22,7 +22,12 @@ const ItemDetail = () =>{
   }, []);
 
     return(
-        <p>HI</p>
+        // <p>HI</p>
+        <p>
+        <h1 className="card-title">{itemDetail.name}</h1>
+                    <h2 className="card-text">{itemDetail.price} </h2>
+                      <h4 className="card-text">{itemDetail.description} </h4>
+                      </p>
     )
 }
 
