@@ -122,6 +122,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             console.log(response);
             localStorage.setItem("auth_token",response.data.auth_token);
             localStorage.setItem("firstName",response.data.user.firstName);
+            localStorage.setItem("userId", response.data.user._id);
             setAccount(response.data.user.firstName);
         }
     }
@@ -130,6 +131,10 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         let response = await authenticateSignup(signup);
         if(!response) return;
         handleClose();
+        console.log(response);
+        localStorage.setItem("auth_token",response.data.auth_token);
+        localStorage.setItem("firstName",response.data.user.firstName);
+        localStorage.setItem("userId", response.data.user._id);
         setAccount(signup.username);
     }
     

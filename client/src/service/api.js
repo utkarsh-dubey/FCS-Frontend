@@ -21,7 +21,7 @@ export const authenticateSignup = async (user) => {
 
 export const getProductById = async (id) => {
     try {
-        return await axios.get(`${url}/product/:${id}`);
+        return await axios.get(`${url}/product/${id}`);
     } catch (error) {
         console.log('Error while getting product by id response', error);
     }
@@ -33,6 +33,22 @@ export const getProducts = async () => {
         console.log('Error while getting product by id response', error);
     }
 }
+
+export const addItemToCart= async (item) => {
+    try {
+        return await axios.post(`${url}/cart/add`, item)
+    } catch (error) {
+        console.log('error while calling Signup API: ', error);
+    }
+}
+export const showCart= async (id) => {
+    try {
+        return await axios.get(`${url}/cart/:${id}`)
+    } catch (error) {
+        console.log('error while calling Signup API: ', error);
+    }
+}
+
 export  const payUsingPaytm = async (data) => {
     try {
         console.log('payment api');
