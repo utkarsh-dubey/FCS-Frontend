@@ -1,5 +1,6 @@
 import { Box, makeStyles, Typography, Button, Grid } from '@material-ui/core';
 import CartItem from './CartItem';
+import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
@@ -7,7 +8,7 @@ import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
 import { post } from '../../utils/paytm';
 import { payUsingPaytm } from '../../service/api';
-
+import axios from 'axios'
 const useStyle = makeStyles(theme => ({
 
     
@@ -49,51 +50,27 @@ const useStyle = makeStyles(theme => ({
 
 const Cart = ({ match, history }) => {
     const classes = useStyle();
+    const [data, setData] = React.useState([]);
 
-    const cartDetails = useSelector(state => state.cart);
-    const { cartItems } = cartDetails;
+    React.useEffect(()=>{
+        const id = localStorage.getItem('userId');
+        axios.get(`http://localhost:7000/cart/${id}`).then(res=>{
+            setData(res.data[0].products)
+            // console.log(res.data[0].products, "{{}}")
+        });
+    }, [])
 
-    const dispatch = useDispatch();
     
-    useEffect(() => {
-        if(cartItems && match.params.id !== cartItems.id)   
-            dispatch(addToCart(match.params.id));
-        console.log(cartItems);
-    }, [dispatch, cartItems, match]);
-
-    const removeItemFromCart = (id) => {
-        dispatch(removeFromCart(id));
-    }
-
-    const buyNow = async () => {
-        let response = await payUsingPaytm({ amount: 500, email: 'codeforinterview01@gmail.com'});
-        var information = {
-            action: 'https://securegw-stage.paytm.in/order/process',
-            params: response    
-        }
-        post(information);
-    }
 
     return (
         <>
-        { cartItems.length ? 
-            <Grid container className={classes.component}>
-                <Grid item lg={9} md={9} sm={12} xs={12} className={classes.leftComponent}>
-                    <Box className={classes.header}>
-                        <Typography style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems?.length})</Typography>
-                    </Box>
-                        {   cartItems.map(item => (
-                                <CartItem item={item} removeItemFromCart={removeItemFromCart}/>
-                            ))
-                        }
-                    <Box className={classes.bottom}>
-                        <Button onClick={() => buyNow()} variant="contained" className={classes.placeOrder}>Place Order</Button>
-                    </Box>
-                </Grid>
-                <Grid item lg={3} md={3} sm={12} xs={12}>
-                    <TotalView cartItems={cartItems} />
-                </Grid>
-            </Grid> : <EmptyCart />
+        {
+            data.length > 0 && data.map(d=>(
+                <>
+                <h2>{d.productId.name} and {d.quantity}</h2>
+                {/* <h2>{}</h2> */}
+                </>
+            ))
         }
         </>
 
