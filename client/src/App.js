@@ -11,6 +11,7 @@ import UploadProduct  from './Components/ItemDetails/UploadProduct';
 import { Box } from '@material-ui/core'
 import CartView from './Components/Cart/CartView'
 import Checkout from './Components/Cart/Checkout';
+import OrderFailure from './Components/Cart/OrderFailure';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
               <Route exact path= '/upload/product' component={UploadProduct} />
               <Route exact path= '/product/:id' component={ItemDetail} />
               <Route exact path= '/checkout' component={Checkout} />
+              <Route exact path= '/orderfailure' component={OrderFailure} />
+              
               
               {/* <UploadProduct /> */}
               <Route component={NotFound} />
