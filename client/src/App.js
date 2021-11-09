@@ -18,12 +18,12 @@ function App() {
           <Header />
           <Box style={{marginTop: 54}}>
             <Switch>
-              {/* <Route exact path= '/' component={Home} />
+              <Route exact path= '/' component={Home} />
               <Route exact path= '/cart' component={Cart} />
               <Route exact path= '/product' component={Products} />
               <Route exact path= '/upload/product' component={UploadProduct} />
-              <Route exact path= '/product/:id' component={ItemDetail} /> */}
-              <UploadProduct />
+              <Route exact path= '/product/:id' component={ItemDetail} />
+              {/* <UploadProduct /> */}
               <Route component={NotFound} />
             </Switch>
           </Box>
