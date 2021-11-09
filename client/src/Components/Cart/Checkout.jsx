@@ -73,7 +73,10 @@ const Checkout = ({ match, history }) => {
 
     React.useEffect(()=>{
         const id = localStorage.getItem('userId');
-        axios.get(`http://localhost:7000/cart/${id}`).then(res=>{
+        // axios.get(`http://localhost:7000/cart/checkout/${id}`)
+        // axios.get(`http://localhost:7000/cart/checkout/${id}`)
+        // axios.get(`http://localhost:7000/cart/checkout/${id}`)
+        axios.get(`http://localhost:7000/cart/checkout/${id}`).then(res=>{
             setData(res.data[0].products) 
             console.log(res)
             // console.log(res.data[0].products, "{{}}")

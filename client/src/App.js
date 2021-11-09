@@ -13,6 +13,8 @@ import { Box } from '@material-ui/core'
 import CartView from './Components/Cart/CartView'
 import Checkout from './Components/Cart/Checkout';
 import OrderFailure from './Components/Cart/OrderFailure';
+import Admin from './Components/Admin/Admin';
+import OrderSuccess from './Components/Cart/OrderSuccess';
 
 function App() {
   const [ text, setText ] = React.useState();
@@ -34,6 +36,9 @@ function App() {
               <Route exact path= '/product/:id' component={ItemDetail} />
               <Route exact path= '/checkout' component={Checkout} />
               <Route exact path= '/orderfailure' component={OrderFailure} />
+              <Route exact path= '/ordersuccess' component={OrderSuccess} />
+              <Route exact path= '/admin' component={Admin} />
+
               
               
               {/* <UploadProduct /> */}
