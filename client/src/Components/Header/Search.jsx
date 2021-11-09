@@ -37,9 +37,9 @@ const useStyle = makeStyles(theme => ({
     }
 }))
 
-const Search = () => {
+const Search = ({text, setText}) => {
     const classes = useStyle();
-    const [ text, setText ] = useState();
+    // const [ text, setText ] = useState();
     const [ open, setOpen ] = useState(true)
 
     const getText = (text) => {
@@ -47,33 +47,20 @@ const Search = () => {
         setOpen(false)
     }
 
-    // const getProducts = useSelector(state => state.getProducts);
-    // const getProducts = getProducts();
-    // const { products } = getProducts;
-    // const dispatch = useDispatch();
     
     const [products, setProducts] = useState([]);
 
     const fetchProducts = async() => {
       let { data } = await getProducts();
-      // if(!response) 
-      //     showError(true);
-      // else {
-      //     showError(false);
-      //     handleClose();
+      // console.log(data, "{{}}")
       setProducts(data);
       console.log(data);
-  
   }
-    // console.log(response);
     console.log("textt",text)
     useEffect(() => {
       fetchProducts();
     }, []);
 
-    // useEffect(() => {
-    //     dispatch(listProducts())
-    // }, [dispatch])
 
     return (
         <div className={classes.search}>

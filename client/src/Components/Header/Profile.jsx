@@ -43,6 +43,7 @@ const Profile = ({ account, setAccount }) => {
                 <MenuItem onClick={() => { handleClose(); logout();}}>
                     <PowerSettingsNew fontSize='small' color='primary'/> 
                     <Typography className={classes.logout}>Logout</Typography>
+                    {/* <Typography onClick={handleSell} className={classes.logout}>Do you wnat to sell?</Typography> */}
                 </MenuItem>
             </Menu>
         </>
