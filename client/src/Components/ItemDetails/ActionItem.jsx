@@ -4,7 +4,7 @@ import { ShoppingCart as Cart, FlashOn as Flash } from '@material-ui/icons';
 import clsx from 'clsx';
 import { useHistory } from 'react-router-dom';
 import { LoginContext } from '../../context/ContextProvider';
-import { payUsingPaytm } from '../../service/api';
+// import { payUsingPaytm } from '../../service/api';
 import { post } from '../../utils/paytm';
 // import { initialState, reducer } from '../../reducers/reducer';
 import { addToCart } from '../../redux/actions/cartActions';
@@ -49,12 +49,12 @@ const ActionItem = ({ product }) => {
     const dispatch = useDispatch();
 
     const buyNow = async () => {
-        let response = await payUsingPaytm({ amount: 500, email: 'codeforinterview01@gmail.com'});
-        var information = {
-            action: 'https://securegw-stage.paytm.in/order/process',
-            params: response    
-        }
-        post(information);
+        // let response = await payUsingPaytm({ amount: 500, email: 'codeforinterview01@gmail.com'});
+        // var information = {
+        //     action: 'https://securegw-stage.paytm.in/order/process',
+        //     params: response    
+        // }
+        // post(information);
     }
 
     const addItemToCart = () => {

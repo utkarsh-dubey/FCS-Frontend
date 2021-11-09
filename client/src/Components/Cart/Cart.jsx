@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
+import { Link } from 'react-router-dom';
 import { post } from '../../utils/paytm';
 import { checkoutCart, payUsingPaytm } from '../../service/api';
 import axios from 'axios'
@@ -18,6 +19,12 @@ const useStyle = makeStyles(theme => ({
         display: 'flex',
         [theme.breakpoints.down('sm')]: {
             padding: '15px 0'
+        }
+    },
+    container: {
+        display: 'flex',
+        [theme.breakpoints.down('sm')]: {
+            display: 'block'
         }
     },
     leftComponent: {
@@ -90,7 +97,12 @@ const Cart = ({ match, history }) => {
                 </>
             )) 
                 }
-             <Button className={classes.checkoutbtn} onClick={() => checkout()} >Checkout</Button>
+                <Link to='/checkout' className={classes.container}>
+                
+                {/* <Typography style={{ marginLeft: 10 }}>Cart</Typography> */}
+                <Button className={classes.checkoutbtn} >Checkout</Button>
+            </Link>
+             
             </div>
             : <EmptyCart />
         }

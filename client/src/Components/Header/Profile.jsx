@@ -23,6 +23,7 @@ const Profile = ({ account, setAccount }) => {
 
     const handleClose = () => {
         setOpen(false);
+        // this.forceUpdate();
     };
 
     const logout = () => {

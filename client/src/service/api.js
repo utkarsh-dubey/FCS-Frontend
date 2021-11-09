@@ -55,10 +55,10 @@ export const checkoutCart= async (id) => {
         console.log('error while calling Show cart API: ', error);
     }
 }
-export  const payUsingPaytm = async (data) => {
+export  const payUsingStripe = async (id) => {
     try {
         console.log('payment api');
-        let response = await axios.post(`${url}/payment/checkout`, data);
+        let response = await axios.get(`${url}/payment/checkout/${id}`);
         console.log(response.data);
         return response.data;
     } catch (error) {
