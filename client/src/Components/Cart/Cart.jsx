@@ -10,6 +10,11 @@ import { Link } from 'react-router-dom';
 import { post } from '../../utils/paytm';
 import { checkoutCart, payUsingPaytm } from '../../service/api';
 import axios from 'axios'
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
 const useStyle = makeStyles(theme => ({
 
     
@@ -91,9 +96,20 @@ const Cart = ({ match, history }) => {
                 {
                 data.map(d=>(
                 <>
-                <h2>{d.productId.name} and {d.quantity}</h2>
-                
-                {/* <h2>{}</h2> */}
+                {/* <h2>{d.productId.name} and Quantity : {d.quantity}</h2> */}
+                <Grid item xs={4}>
+                    <Card sx={{ maxWidth: 345 }}> 
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {d.productId.name} and Quantity : {d.quantity}
+                          </Typography>
+                          <Typography gutterBottom variant="h5" component="div">
+                           ₹{d.productId.price}/-
+                          </Typography>
+                        </CardContent>
+                        {/* <h2>{}</h2> */}
+                    </Card>
+                </Grid>
                 </>
             )) 
                 }

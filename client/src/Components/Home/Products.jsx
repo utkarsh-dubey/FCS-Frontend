@@ -83,7 +83,7 @@ const Products = () => {
           {t.name}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {t.price}
+          ₹{t.price}/-
         </Typography>
       </CardContent>
       <CardActions>
