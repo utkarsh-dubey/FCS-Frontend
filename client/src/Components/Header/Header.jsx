@@ -54,7 +54,7 @@ const ToolBar = withStyles({
     },
 })(Toolbar);
 
-const Header = () => {
+const Header = ({text, setText}) => {
     const classes = useStyle();
     const logoURL = 'https://i.ibb.co/bPdCGWd/LOGO.png';
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
@@ -102,7 +102,7 @@ const Header = () => {
                         <img src={subURL} className={classes.subURL} />
                     </Box> */}
                 </Link>
-                <Search />
+                <Search text={text} setText={setText} />
                 <span className={classes.customButtons}><CustomButtons /></span>
             </ToolBar>
         </AppBar>

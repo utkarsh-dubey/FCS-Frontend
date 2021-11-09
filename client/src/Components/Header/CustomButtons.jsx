@@ -7,6 +7,7 @@ import LoginDialog from '../Login/LoginDialog';
 import { LoginContext } from '../../context/ContextProvider';
 import { useSelector } from 'react-redux';
 import Profile from './Profile';
+import axios from 'axios';
 
 const useStyle = makeStyles(theme => ({
     container: {
@@ -59,6 +60,10 @@ const CustomButtons = () => {
     const { account, setAccount } = useContext(LoginContext);
 
     const cartDetails = useSelector(state => state.cart);
+
+
+    // axios.get(`http://localhost:7000/user/user${}`)
+
     const { cartItems } = cartDetails;
     useEffect(() => {
          
@@ -80,7 +85,7 @@ const CustomButtons = () => {
                 </Link>
             }
             <Link>
-                <Typography to="/upload/product" style={{ marginTop: 2 }}>Upload</Typography>
+                <Typography to="/upload/product" style={{ marginTop: 2 }}>Want to sell</Typography>
             </Link>
             {/* {
             localStorage.getItem("isAdmin")?

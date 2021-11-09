@@ -46,8 +46,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Products = () => {
+const Products = ({text, setText}) => {
   const [products, setProducts] = useState([]);
+  console.log(text, "{{}}")
   const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
   const fetchProducts = async () => {
