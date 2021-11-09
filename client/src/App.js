@@ -27,7 +27,7 @@ function App() {
               <Route exact path= '/' component={Home} />
               <Route exact path= '/cart' component={Cart} />
               {/* <Route exact path= '/product' render={()=<Products  />} /> */}
-              <Route path='/product' component={()=>(
+              <Route path='/products' component={()=>(
                        <Products text={text} setText={setText} />
                        )}/>
               <Route exact path= '/upload/product' component={UploadProduct} />

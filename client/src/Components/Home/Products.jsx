@@ -52,7 +52,7 @@ const Products = ({text, setText}) => {
   const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
   const fetchProducts = async () => {
-    let { data } = await getProducts(searchWord);
+    let { data } =text?  await getProducts(text): await getProducts("");
     setProducts(data);
     console.log(data);
   };
@@ -60,7 +60,7 @@ const Products = ({text, setText}) => {
   useEffect(() => {
     // console.log("prop passing",props)
     // props?.props.location?.props.location.searchu?.setSearchWord(props.location.searchu)
-
+    // text ? setSearchWord(text):setSearchWord("")
     fetchProducts();
   }, []);
   // renderTrails = () => {

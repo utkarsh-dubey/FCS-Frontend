@@ -39,11 +39,11 @@ const useStyle = makeStyles(theme => ({
 
 const Search = ({text, setText}) => {
     const classes = useStyle();
-    // const [ text, setText ] = useState();
+    const [ textBox, setTextBox ] = useState();
     const [ open, setOpen ] = useState(true)
 
-    const getText = (text) => {
-        setText(text);
+    const getText = (textt) => {
+        setTextBox(textt);
         setOpen(false)
     }
 
@@ -51,10 +51,13 @@ const Search = ({text, setText}) => {
     const [products, setProducts] = useState([]);
 
     const fetchProducts = async() => {
-      let { data } = await getProducts();
+      let { data } = await getProducts("");
       // console.log(data, "{{}}")
       setProducts(data);
       console.log(data);
+  }
+  const searchDialog = async() => {
+    setText(textBox)
   }
     console.log("textt",text)
     useEffect(() => {
@@ -73,21 +76,12 @@ const Search = ({text, setText}) => {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e) => getText(e.target.value)}
             />
-            {
-              text &&
             
-            <Link to={{ pathname: '/product', searchu : {searchitem: text}}}>
-            
-            <div className={classes.searchIcon} >
-              <SearchIcon />
-            </div>
-            </Link>
-            }
             {
-              text && 
+              textBox && 
               <List className={classes.list} hidden={open}>
                 {
-                  products.filter(product => product.name.toLowerCase().includes(text.toLowerCase())).map(product => (
+                  products.filter(product => product.name.toLowerCase().includes(textBox.toLowerCase())).map(product => (
                     <ListItem>
                       <Link 
                         to={`/product/${product._id}`} 
@@ -100,6 +94,16 @@ const Search = ({text, setText}) => {
                   ))
                 }  
               </List>
+            }
+            {
+              textBox &&
+            
+            <Link to='/products'>
+            
+            <div className={classes.searchIcon} >
+              <SearchIcon onClick={()=>searchDialog()}/>
+            </div>
+            </Link>
             }
         </div>
     )
