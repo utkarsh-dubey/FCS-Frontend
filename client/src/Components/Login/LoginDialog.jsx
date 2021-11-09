@@ -123,6 +123,8 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             localStorage.setItem("auth_token",response.data.auth_token);
             localStorage.setItem("firstName",response.data.user.firstName);
             localStorage.setItem("userId", response.data.user._id);
+            localStorage.setItem("isAdmin", response.data.user.isAdmin);
+
             setAccount(response.data.user.firstName);
         }
     }
@@ -132,10 +134,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         if(!response) return;
         handleClose();
         console.log(response);
-        localStorage.setItem("auth_token",response.data.auth_token);
-        localStorage.setItem("firstName",response.data.user.firstName);
-        localStorage.setItem("userId", response.data.user._id);
-        setAccount(signup.username);
+        setAccount(signup.firstname);
     }
     
     const toggleSignup = () => {
@@ -170,7 +169,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                         <Box className={classes.login}>
                             <TextField onChange={(e) => onInputChange(e)} name='firstName' label='Enter Firstname' />
                             <TextField onChange={(e) => onInputChange(e)} name='lastName' label='Enter Lastname' />
-                            <TextField onChange={(e) => onInputChange(e)} name='username' label='Enter Username' />
+                            {/* <TextField onChange={(e) => onInputChange(e)} name='username' label='Enter Username' /> */}
                             <TextField onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
                             <TextField type='password' onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
                             <TextField onChange={(e) => onInputChange(e)} name='gender' label='Enter Gender' />
