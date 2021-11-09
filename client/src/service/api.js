@@ -26,9 +26,9 @@ export const getProductById = async (id) => {
         console.log('Error while getting product by id response', error);
     }
 }
-export const getProducts = async () => {
+export const getProducts = async (word) => {
     try {
-        return await axios.get(`${url}/product`);
+        return await axios.get(`${url}/product/?search=${word}`);
     } catch (error) {
         console.log('Error while getting products response', error);
     }

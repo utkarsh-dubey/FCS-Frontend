@@ -51,7 +51,7 @@ const Products = () => {
   const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
   const fetchProducts = async () => {
-    let { data } = await getProducts();
+    let { data } = await getProducts(searchWord);
     setProducts(data);
     console.log(data);
   };
@@ -59,6 +59,7 @@ const Products = () => {
   useEffect(() => {
     // console.log("prop passing",props)
     // props?.props.location?.props.location.searchu?.setSearchWord(props.location.searchu)
+
     fetchProducts();
   }, []);
   // renderTrails = () => {
