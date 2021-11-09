@@ -80,7 +80,7 @@ const CustomButtons = () => {
                 </Link>
             }
             <Link>
-                <Typography style={{ marginTop: 2 }}>More</Typography>
+                <Typography to="/upload/product" style={{ marginTop: 2 }}>Upload</Typography>
             </Link>
             <Link to='/cart' className={classes.container}>
                 <Badge badgeContent={cartItems?.length} color="secondary">

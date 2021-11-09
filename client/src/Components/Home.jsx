@@ -36,8 +36,8 @@ const Home = () => {
             <NavBar />
             <Products />
             <Box className={classes.component}>
-                <Banner />
-                <MidSlide products={products} />
+                {/* <Banner /> */}
+                {/* <MidSlide products={products} />
                 <MidSection />
                 <Slide
                     data={products} 
@@ -68,7 +68,7 @@ const Home = () => {
                     title='Recommended Items'
                     timer={false} 
                     multi={true} 
-                />
+                /> */}
             </Box>
         </>
     )
