@@ -93,6 +93,7 @@ const Cart = ({ match, history }) => {
         {
             data.length > 0 ? 
             <div>
+                <Grid align='center'> 
                 {
                 data.map(d=>(
                 <>
@@ -117,8 +118,9 @@ const Cart = ({ match, history }) => {
                 
                 {/* <Typography style={{ marginLeft: 10 }}>Cart</Typography> */}
                 <Button className={classes.checkoutbtn} >Checkout</Button>
+                
             </Link>
-             
+            </Grid>
             </div>
             : <EmptyCart />
         }
