@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-
+  const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
   const fetchProducts = async () => {
     let { data } = await getProducts();
@@ -57,6 +57,8 @@ const Products = () => {
   };
 
   useEffect(() => {
+    // console.log("prop passing",props)
+    // props?.props.location?.props.location.searchu?.setSearchWord(props.location.searchu)
     fetchProducts();
   }, []);
   // renderTrails = () => {

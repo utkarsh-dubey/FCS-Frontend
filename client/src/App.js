@@ -9,6 +9,7 @@ import Products from './Components/Home/Products';
 import ItemDetail  from './Components/ItemDetails/ItemDetail';
 import UploadProduct  from './Components/ItemDetails/UploadProduct';
 import { Box } from '@material-ui/core'
+import CartView from './Components/Cart/CartView'
 
 function App() {
   return (
