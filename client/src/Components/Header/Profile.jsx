@@ -2,16 +2,23 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Menu, MenuItem, makeStyles } from '@material-ui/core';
 import { PowerSettingsNew } from '@material-ui/icons';
+import { Theme } from '@material-ui/core';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme) => ({
     component: {
         marginTop: 40,
     },
+    container: {
+        display: "flex",
+        [theme.breakpoints.down("sm")]: {
+          display: "block",
+        },
+      },
     logout: {
         fontSize: 14,
         marginLeft: 20
     }
-})
+}))
 
 const Profile = ({ account, setAccount }) => {
     const [open, setOpen] = useState(false);

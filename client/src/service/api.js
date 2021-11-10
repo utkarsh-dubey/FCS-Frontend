@@ -66,6 +66,14 @@ export  const payUsingStripe = async (id) => {
     }
 }
 
+export const sendOtpRequest= async (email) => {
+    try {
+        return await axios.get(`${url}/user/sendotp?email=${email}`)
+    } catch (error) {
+        console.log('error while sending OTP: ', error);
+    }
+}
+
 // {
 //     headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}` }
 // }
