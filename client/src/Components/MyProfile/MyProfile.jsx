@@ -31,6 +31,7 @@ const MyProfile = () => {
     const [password, setPassword] = useState();
     const [gstNumber, setGstNumber] = useState();
     const [panNumber, setPanNumber] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();    
     
     useEffect(() => {
         const userId = localStorage.getItem("userId");
@@ -43,7 +44,11 @@ const MyProfile = () => {
                         setFirstName(res.data.firstName);
                         setLastName(res.data.lastName);
                         setEmail(res.data.email);
-                        setGender(res.data.gender);});
+                        setGender(res.data.gender);
+                        setGstNumber(res.data.gstNumber);
+                        setPanNumber(res.data.panNumber);
+                        setPhoneNumber(res.data.phoneNumber);
+                        });
         //   .then((res) => {setIsSeller(res.data.isSeller);setIsAdmin(res.data.isAdmin);console.log(res.data, res.data.isAdmin)});
         
         
@@ -60,7 +65,8 @@ const MyProfile = () => {
               lastName: lastName,
               gender: gender,
               gstNumber: gstNumber,
-              panNumber: panNumber
+              panNumber: panNumber,
+              phoneNumber: phoneNumber
           }
           axios.post(`http://localhost:7000/user/update/${userId}`, payload).then(res=>console.log(res.data));
       }
@@ -78,7 +84,6 @@ const MyProfile = () => {
             name="name"
             // label="FirstName"
             fullWidth
-            // disabled={true}
             value={firstName}
             onChange={(e)=>setFirstName(e.target.value)}
           ></TextField>
@@ -89,7 +94,6 @@ const MyProfile = () => {
             name="name"
             // label="LastName"
             fullWidth
-            // disabled={true}
             value={lastName}
             onChange={(e)=>setLastName(e.target.value)}
           />
@@ -98,27 +102,11 @@ const MyProfile = () => {
         <h4> Email Id</h4>
           <TextField
             name="email"
-            // label="email"
-            // type="number"
-            // onChange={(e)=>setQuantity(e.target.value)}
             fullWidth
             value={email}
-            //   onChange={(e) => setBoxIntact(e.target.value)}
-            // disabled={true}
           />
         </Grid>
-        {/* <Grid item xs={12} md={6}>
-          <TextField
-            name="password"
-            label="password"
-            // onChange={(e)=>setDescription(e.target.value)}
-            // type="number"
-            fullWidth
-            value={password}
-            //   onChange={(e) => setColor(e.target.value)}data.
-            // disabled={true}
-          />
-        </Grid> */}
+        
         <Grid item xs={12} md={6}>
           <h4> Gender</h4>
           <TextField
@@ -128,8 +116,36 @@ const MyProfile = () => {
             onChange={(e)=>setGender(e.target.value)}
             fullWidth
             value={gender}
-            //   onChange={(e) => setMinAge(e.target.value)}data.
-            // disabled={true}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <h4> GST number</h4>
+          <TextField
+            name="GST number"
+            onChange={(e)=>setGstNumber(e.target.value)}
+            fullWidth
+            value={gstNumber}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <h4> PAN number</h4>
+          <TextField
+            name="PAN number"
+            onChange={(e)=>setPanNumber(e.target.value)}
+            fullWidth
+            value={panNumber}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <h4> Phone number</h4>
+          <TextField
+            name="Phone number"
+            onChange={(e)=>setPhoneNumber(e.target.value)}
+            fullWidth
+            value={phoneNumber}
           />
         </Grid>
        
