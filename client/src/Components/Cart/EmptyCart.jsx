@@ -1,6 +1,4 @@
-
 import { makeStyles, Typography, Box } from '@material-ui/core';
-import styles from './EmptyCartStyle.css';
 
 const useStyle = makeStyles({
     component: {
@@ -18,36 +16,20 @@ const useStyle = makeStyles({
     }
 })
 
-const EmptyCart = ({onSuccess}) => {
+
+const EmptyCart = () => {
+    const imgurl = 'https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90';
+    const classes = useStyle();
 
     return (
-        <form method="post" action="#" id="#">
-             {/* onSubmit={onSubmit} */}
-            <div className="form-group files">
-                <label>Upload Your File </label>
-                <input type="file"
-                    //    onChange={onInputChange}
-                       className="form-control"
-                       multiple/>
-            </div>
-
-            <button>Submit</button>
-        </form>
+        <Box className={classes.component}>
+            <Box className={classes.container}>
+                <img src={imgurl} className={classes.image} />
+                <Typography>Your cart is empty!</Typography>
+                <span>Add items to it now.</span>
+            </Box>
+        </Box>
     )
 }
-// const EmptyCart = () => {
-//     const imgurl = '';
-//     const classes = useStyle();
-
-//     return (
-//         <Box className={classes.component}>
-//             <Box className={classes.container}>
-//                 <img src={imgurl} className={classes.image} />
-//                 <Typography>Your cart is empty!</Typography>
-//                 {/* <span>Add items to it now.</span> */}
-//             </Box>
-//         </Box>
-//     )
-// }
 
 export default EmptyCart;

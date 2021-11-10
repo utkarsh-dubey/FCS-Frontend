@@ -2,6 +2,7 @@
 import { makeStyles, Typography, Box } from '@material-ui/core';
 import {useEffect,useState} from 'react';
 import { Redirect } from "react-router-dom";
+import axios from 'axios'
 
 const useStyle = makeStyles({
     component: {

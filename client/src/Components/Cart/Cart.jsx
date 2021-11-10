@@ -90,13 +90,7 @@ const Cart = ({ match, history }) => {
         setRedirect(false);
     }, [])
 
-    const checkout = async() => {
-        let response = await checkoutCart(localStorage.getItem('userId'));
-        // if(!response) return;
-        // handleClose();
-        console.log(response);
-        // setAccount(signup.firstname);
-    }
+    
     const releaseCart = async(d) => {
         // let response = await checkoutCart(localStorage.getItem('userId'));
         const id = localStorage.getItem('userId');
