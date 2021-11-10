@@ -5,7 +5,7 @@ import { ShoppingCart } from '@material-ui/icons';
 import {useEffect} from "react";
 import LoginDialog from '../Login/LoginDialog';
 import { LoginContext } from '../../context/ContextProvider';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import Profile from './Profile';
 import axios from 'axios';
 
@@ -59,12 +59,12 @@ const CustomButtons = () => {
     const [ open, setOpen ] = useState(false);
     const { account, setAccount } = useContext(LoginContext);
 
-    const cartDetails = useSelector(state => state.cart);
+    // const cartDetails = useSelector(state => state.cart);
 
 
     // axios.get(`http://localhost:7000/user/user${}`)
 
-    const { cartItems } = cartDetails;
+    // const { cartItems } = cartDetails;
     useEffect(() => {
          
         var userkiid=localStorage.getItem("firstName");
@@ -93,10 +93,12 @@ const CustomButtons = () => {
                 <Typography to="/admin" style={{ marginTop: 2 }}>Admin</Typography>
             </Link>: <div>sfdjdbfsd</div>
             }
+            {/* <Badge badgeContent={cartItems?.length} color="secondary"> */}
+            {/* </Badge> */}
             <Link to='/cart' className={classes.container}>
-                <Badge badgeContent={cartItems?.length} color="secondary">
+                
                     <ShoppingCart />
-                </Badge>
+                
                 <Typography style={{ marginLeft: 10 }}>Cart</Typography>
             </Link>
             <LoginDialog open={open} setOpen={setOpen} setAccount={setAccount} />

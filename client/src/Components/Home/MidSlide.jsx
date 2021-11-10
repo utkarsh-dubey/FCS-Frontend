@@ -1,5 +1,5 @@
 import { Box, makeStyles } from '@material-ui/core';
-import Slide from './Slide';
+// import Slide from './Slide';
 
 const useStyle = makeStyles(theme => ({
     component: {
@@ -30,12 +30,12 @@ const MidSlide = ({ products }) => {
     return (
         <Box className={classes.component}>
             <Box className={classes.leftComponent}>
-                <Slide 
+                {/* <Slide 
                     data={products} 
                     title='Deals of the Day'
                     timer={false} 
                     multi={true} 
-                />
+                /> */}
             </Box>
             <Box className={classes.rightComponent}>
                 <img src={adURL} style={{width: 2}}/>

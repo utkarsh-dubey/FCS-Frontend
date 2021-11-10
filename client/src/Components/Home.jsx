@@ -3,10 +3,10 @@ import NavBar from './Home/NarBar';
 import Banner from './Home/Banner';
 import MidSlide from './Home/MidSlide';
 import MidSection from './Home/MidSection';
-import Slide from './Home/Slide';
+// import Slide from './Home/Slide';
 import React,  { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'; // hooks
-import { getProducts as listProducts } from '../redux/actions/productActions';
+// import { useSelector, useDispatch } from 'react-redux'; // hooks
+// import { getProducts as listProducts } from '../redux/actions/productActions';
 import Products from './Home/Products';
 
 const useStyle = makeStyles({
@@ -19,17 +19,17 @@ const useStyle = makeStyles({
 const Home = () => {
     const classes = useStyle();
 
-    const getProducts = useSelector(state => state.getProducts);
+    // const getProducts = useSelector(state => state.getProducts);
 
-    const { products, error } = getProducts;
+    // const { products, error } = getProducts;
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(listProducts())
-        console.log("opop")
-        console.log(products)
-    }, [dispatch])
+    // useEffect(() => {
+    //     // dispatch(listProducts())
+    //     console.log("opop")
+    //     // console.log(products)
+    // }, [])
 
     return (
         <>

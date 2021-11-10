@@ -1,10 +1,10 @@
 
 
 
-const Product = () => {
-    return (
-        <p>Hi from Product</p>
-    )
-}
+// const Product = () => {
+//     return (
+//         <p>Hi from Product</p>
+//     )
+// }
 
-export default Product;
+// export default Product;

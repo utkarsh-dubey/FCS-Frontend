@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react'
 import { Home, NotFound } from './Components/default';
 import Header from './Components/Header/Header';
-import DetailView from './Components/ItemDetails/DetailView';
+// import DetailView from './Components/ItemDetails/DetailView';
 import TemplateProvider from './templates/TemplateProvider';
 import ContextProvider from './context/ContextProvider';
 import Cart from './Components/Cart/Cart';
@@ -10,7 +10,7 @@ import Products from './Components/Home/Products';
 import ItemDetail  from './Components/ItemDetails/ItemDetail';
 import UploadProduct  from './Components/ItemDetails/UploadProduct';
 import { Box } from '@material-ui/core'
-import CartView from './Components/Cart/CartView'
+
 import Checkout from './Components/Cart/Checkout';
 import OrderFailure from './Components/Cart/OrderFailure';
 import Admin from './Components/Admin/Admin';

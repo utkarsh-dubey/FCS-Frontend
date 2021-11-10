@@ -1,13 +1,8 @@
 import { Box, makeStyles, Typography, Button, Grid } from '@material-ui/core';
-import CartItem from './CartItem';
+
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
-import TotalView from './TotalView';
-import EmptyCart from './EmptyCart';
-import { post } from '../../utils/paytm';
-import { checkoutCart, payUsingPaytm, payUsingStripe } from '../../service/api';
+import { checkoutCart, payUsingStripe } from '../../service/api';
 import axios from 'axios'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
