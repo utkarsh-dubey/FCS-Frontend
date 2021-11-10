@@ -47,7 +47,7 @@ const Profile = ({ account, setAccount }) => {
                 onClose={handleClose}
                 className={classes.component}
             >
-                <Link to="/profile"  className={classes.container}> 
+                <Link to="/myProfile" > 
                 <MenuItem onClick={() => { handleClose() }}>
                 <Typography className={classes.logout}>Profile</Typography>
                 </MenuItem>
