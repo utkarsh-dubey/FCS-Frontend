@@ -68,7 +68,10 @@ const useStyle = makeStyles((theme) => ({
     border: "2px solid #000",
     // boxShadow: 24,
     p: 4,
-  }
+  },
+  paperContainer: {
+    backgroundColor:'white',
+}
 }));
 
 // const 
@@ -207,18 +210,22 @@ const CustomButtons = () => {
         </Link>
         <LoginDialog open={open} setOpen={setOpen} setAccount={setAccount} />
       </Box>
-      <Modal
+
+      {/* <Paper style={classes.paperContainer}></Paper> */}
+      
+      <Modal  
+        style={{ overlay: { background: 'white' } }}
         open={openModal}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={classes.modal}>
+        <Box style={{ backgroundColor:'white' }} align ='center' className={classes.modal}>
         <TextField id="standard-basic" label="PAN Number" value={panNumber} onChange={(e)=>setPanNumber(e.target.value)} variant="standard"  />
         <TextField id="standard-basic" label="GST Number" value={gstNumber} onChange={(e)=>setGstNumber(e.target.value)} variant="standard" />
         
         <Link to="/upload/product" className={classes.container}>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button align ='center' onClick={handleSubmit}><h2>Submit</h2></Button>
         </Link>
         </Box>
       </Modal>

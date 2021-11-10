@@ -3,9 +3,19 @@ import { Typography, Grid, Paper, TextField, Button, TableCell, TableRow, TableB
 import axios from 'axios';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Link  } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
 
+const useStyle = makeStyles(theme => ({
+  container: {
+      display: 'flex',
+      [theme.breakpoints.down('sm')]: {
+          display: 'block'
+      }
+  },
+}));
 
 const UploadProduct = ({setPdfid}) => {
+  const classes = useStyle();
     const [pdfhere, setPdfhere] = useState();
     const [mainData, setMainData] = useState([]);
     const [limit, setLimit] = useState(10);
@@ -45,7 +55,9 @@ const UploadProduct = ({setPdfid}) => {
             <Typography>Add Your Pdf Here</Typography>
             <input style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} />
             
+            <Link to="/upload/product" >
             <Button onClick={handleSubmit} >Submit</Button>
+            </Link>
 			<div>
             <Typography style={{marginTop:'55px'}}>Your recent pdf</Typography>
             
