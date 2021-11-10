@@ -26,7 +26,7 @@ const AddProduct = ({pdfid}) => {
         console.log(pic)
         pic.map((p, i)=>formData.append('pic'+i, p))
         // formData.append('pic', pic);
-        axios.post('http://localhost:7000/product/imageupload', formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>setImages(res.data.links));
+        axios.post('http://localhost:7000/product/imageupload', formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{setImages(res.data.links);window.alert("Images uploaded")});
     }
 
     
@@ -48,7 +48,7 @@ const AddProduct = ({pdfid}) => {
     return (
         <div>
 
-<input style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} multiple />
+<input accept="image/png, image/gif, image/jpeg"  style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} multiple />
 
 <Button onClick={handleClick}>Upload Image</Button>
 

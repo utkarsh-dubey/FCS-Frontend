@@ -135,7 +135,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             showError(false);
             // alertService.success('Success!!', { autoClose, keepAfterRouteChange })
             handleClose();
-            window.alert(response.data);
+            window.alert("Logged in Successfully");
             console.log(response);
             localStorage.setItem("auth_token",response.data.auth_token);
             localStorage.setItem("firstName",response.data.user.firstName);
@@ -156,6 +156,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             let response = await authenticateSignup(signup)
             handleClose();
             console.log(response);
+            window.alert("Account created successfully")
             setAccount(signup.firstname);
         }
         else

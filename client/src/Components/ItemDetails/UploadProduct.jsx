@@ -23,7 +23,7 @@ const UploadProduct = ({setPdfid}) => {
     React.useEffect(()=>{
         const userId = localStorage.getItem("userId");
 
-        axios.get(`http://localhost:7000/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data);setPdfid(res.data.pdf._id)})
+        axios.get(`http://localhost:7000/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data)})
     }, [])
 	// const [isFilePicked, setIsFilePicked] = useState(false);
 
@@ -38,8 +38,8 @@ const UploadProduct = ({setPdfid}) => {
         const formData = new FormData();
         const userId = localStorage.getItem("userId");
         formData.append("pdf", pdfhere);
-        window.alert("PDF uploaded")
-        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
+        
+        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);window.alert("PDF uploaded")})
     }
     const handleLimitChange = (event) => {
         setLimit(event.target.value);
@@ -53,7 +53,7 @@ const UploadProduct = ({setPdfid}) => {
         <>
         <div style={{textAlign:'center', marginTop:'150px'}} >
             <Typography>Add Your Pdf Here</Typography>
-            <input style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} />
+            <input accept="application/pdf" style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} />
             
             <Link to="/upload/product" >
             <Button onClick={handleSubmit} >Submit</Button>
