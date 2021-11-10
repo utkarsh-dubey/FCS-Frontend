@@ -19,42 +19,30 @@ const AddProduct = () => {
         // console.log(e.target.files);
     }
     const getBase64 = file => {
-        return new Promise(resolve => {
-          let fileInfo;
-          let baseURL = "";
-          // Make new FileReader
-          let reader = new FileReader();
-    
-          // Convert the file to base64 text
-          reader.readAsDataURL(file);
-    
-          // on reader load somthing...
-          reader.onload = () => {
-            // Make a fileInfo Object
-            console.log("Called", reader);
-            baseURL = reader.result;
-            return (baseURL);
-            resolve(baseURL);
-          };
-          console.log(fileInfo);
-        });
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+          });
       };
-    console.log(pic);
+    console.log(pic, pic.length);
     if(pic.length===2) {
+        let arr = [];
         getBase64(pic[0]).then(res=>{
-            axios.post('http://localhost:7000/products/imageupload', {
-            image: res.result
-        }).then(res1=>console.log(res1.data))
+            // setImageBinary([...imageBinary, res.data])
+            console.log(res)
+            arr.push(res);
         })
         getBase64(pic[1]).then(res=>{
-            axios.post('http://localhost:7000/products/imageupload', {
-            image: res.result
-        }).then(res1=>console.log(res1.data))
+            // setImageBinary([...imageBinary, res.data])
+            arr.push(res);
         })
-        
-        // axios.post('http://localhost:7000/products/imageupload', {
-        //     image: getBase64(pic[1])
-        // }).then(res=>console.log(res.data))
+        console.log(arr[0], arr[1], "{{}}")
+        axios.post('http://localhost:7000/products/imageupload', {
+            image: arr
+        }).then(res=>console.log(res.data))
+        setPic([...pic, 'ppp'])
     }
     // const [commission, setCommission] = useState();
     const handleSubmit = () => {

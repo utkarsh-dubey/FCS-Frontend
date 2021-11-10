@@ -6,7 +6,7 @@ import { Link  } from 'react-router-dom';
 
 
 const UploadProduct = () => {
-    const [selectedFile, setSelectedFile] = useState();
+    const [pdfhere, setPdfhere] = useState();
     const [mainData, setMainData] = useState([]);
     const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -18,15 +18,17 @@ const UploadProduct = () => {
 	// const [isFilePicked, setIsFilePicked] = useState(false);
 
     const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
+		setPdfhere(event.target.files[0]);
 		// setIsSelected(true);.
         console.log(event.target.files[0]);
 	};
     const handleSubmit = () => {
+        console.log("{{}{}{}{}}")
+
         const formData = new FormData();
         const userId = localStorage.getItem("userId");
-        formData.append("file", selectedFile);
-        // axios.post(`http://localhost:7000/pdf/submitpdf/${userId}`, formData).then(res=>console.log(res.data))
+        formData.append("pdf", pdfhere);
+        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData).then(res=>console.log(res.data))
     }
     const handleLimitChange = (event) => {
         setLimit(event.target.value);
