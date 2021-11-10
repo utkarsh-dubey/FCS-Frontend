@@ -98,6 +98,10 @@ const AllPdf = () => {
                     {getShipmentStatus(proc.shipment ? proc.shipment.shipped_on ?proc.shipment.shipped_on :'NA':'NA')}
                   </TableCell> */}
                   <TableCell>
+                  <a href={proc.pdf} download>
+                  <Button variant="contained" color="primary" >
+                          Download
+                  </Button></a>
                   <Button variant="contained" onClick={handleOpen} color="primary" >
                           View
                   </Button>
