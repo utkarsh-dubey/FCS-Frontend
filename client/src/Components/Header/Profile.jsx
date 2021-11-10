@@ -40,7 +40,14 @@ const Profile = ({ account, setAccount }) => {
                 onClose={handleClose}
                 className={classes.component}
             >
+                <Link to="/profile"  > 
+                <MenuItem onClick={() => { handleClose() }}>
+                <Typography className={classes.logout}>Profile</Typography>
+                </MenuItem>
+                </Link>
                 <MenuItem onClick={() => { handleClose(); logout();}}>
+                    
+                
                     <PowerSettingsNew fontSize='small' color='primary'/> 
                     <Typography className={classes.logout}>Logout</Typography>
                     {/* <Typography onClick={handleSell} className={classes.logout}>Do you wnat to sell?</Typography> */}
