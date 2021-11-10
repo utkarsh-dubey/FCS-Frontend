@@ -22,10 +22,8 @@ const UploadProduct = ({setPdfid}) => {
   const [page, setPage] = useState(0);
     React.useEffect(()=>{
         const userId = localStorage.getItem("userId");
-
-        axios.get(`http://localhost:7000/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data);setPdfid(res.data.pdf._id)})
+        axios.get(`http://localhost:7000/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data)})
     }, [])
-	// const [isFilePicked, setIsFilePicked] = useState(false);
 
     const changeHandler = (event) => {
 		setPdfhere(event.target.files[0]);
@@ -38,8 +36,9 @@ const UploadProduct = ({setPdfid}) => {
         const formData = new FormData();
         const userId = localStorage.getItem("userId");
         formData.append("pdf", pdfhere);
-        window.alert("PDF uploaded")
-        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
+        // window.alert("PDF uploaded")
+        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data, "{}}");
+    })
     }
     const handleLimitChange = (event) => {
         setLimit(event.target.value);
@@ -97,7 +96,7 @@ const UploadProduct = ({setPdfid}) => {
                   
                   <TableCell>
                     {/* {getStatus(proc.status)} */}
-                    {proc.isApproved}hi
+                    {proc.isApproved}
                   </TableCell>
                   {/* <TableCell>
                     {getShipmentStatus(proc.shipment ? proc.shipment.shipped_on ?proc.shipment.shipped_on :'NA':'NA')}
@@ -108,7 +107,7 @@ const UploadProduct = ({setPdfid}) => {
                           Published
                   </Button>
                   </Link>:proc.isApproved ? <Link to="/product/form" >
-                  <Button variant="contained" color="primary" >
+                  <Button variant="contained" onClick={setPdfid(proc._id)} color="primary" >
                           Approved | Add Product
                   </Button>
                   </Link> : proc.isRejected? <Link>

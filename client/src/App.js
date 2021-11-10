@@ -22,6 +22,7 @@ import MyProfile from "./Components/MyProfile/MyProfile";
 function App() {
   const [text, setText] = React.useState();
   const [pdfid, setPdfid] = useState();
+  console.log("pdf", pdfid)
 
   return (
     // <div></div>
