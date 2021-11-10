@@ -46,7 +46,7 @@ function App() {
               <Route exact path="/admin/user/all" component={AllUser} />
               <Route exact path="/admin/user/product" component={AllProduct} />
               <Route exact path="/admin/user/pdf" component={AllPdf} />
-              <Route exact path="/admin" component={Admin} />
+              {/* <Route exact path="/admin" component={Admin} /> */}
               <Route exact path="/myProfile" component={MyProfile} />
 
               {/* <Route exact path= '/admin' component={Admin} /> */}

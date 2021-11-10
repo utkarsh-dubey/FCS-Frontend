@@ -165,7 +165,7 @@ const CustomButtons = () => {
           </Typography>
         </Link> }
         {isAdmin && (
-          <Link to="/admin">
+          <Link >
             <Typography id="basic-button"
         aria-controls="basic-menu"
         aria-haspopup="true"

@@ -79,7 +79,7 @@ const signupInitialValues = {
     username: '',
     email: '',
     password: '',
-    phone: ''
+    phoneNumber: ''
 };
 
 const accountInitialValues = {
@@ -105,6 +105,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     const [ signup, setSignup ] = useState(signupInitialValues);
     const [ error, showError] = useState(false);
     const [ error2, showError2] = useState(false);
+    const [ error3, showError3] = useState(false);
     const [ account, toggleAccount ] = useState(accountInitialValues.login);
     const [openModal, setOpenModal] = React.useState(false);
     const [ otp, setOtp] = useState("");
@@ -114,6 +115,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     useEffect(() => {
         showError(false);
         showError2(false);
+        showError3(false);
     }, [login])
 
     const onValueChange = (e) => {
@@ -182,11 +184,11 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         console.log(response,"aaajja otp")
         if(!response)
         {
-            showError(true);
+            showError3(true);
         }
         else
         {
-            showError(false);
+            showError3(false);
         toggleAccount(accountInitialValues.OTP)
         }
       };
@@ -215,8 +217,8 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                             <TextField type='password' onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
                             <Typography className={classes.text}>By continuing, you agree to Cozmolane's Terms of Use and Privacy Policy.</Typography>
                             <Button className={classes.loginbtn} onClick={() => loginUser()} >Login</Button>
-                            <Typography className={classes.text} style={{textAlign:'center'}}>OR</Typography>
-                            <Button className={classes.requestbtn}>Request OTP</Button>
+                            {/* <Typography className={classes.text} style={{textAlign:'center'}}>OR</Typography> */}
+                            {/* <Button className={classes.requestbtn}>Request OTP</Button> */}
                             <Typography className={classes.createText} onClick={() => toggleSignup()} >New to Cozmolane? Create an account</Typography>
                         </Box> : 
                         account.view ==='signup' ?
@@ -227,8 +229,8 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                             <TextField onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
                             <TextField type='password' onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
                             <TextField onChange={(e) => onInputChange(e)} name='gender' label='Enter Gender' />
-                            {/* <TextField onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' /> */}
-                            { error && <Typography className={classes.error}>User already exist please login</Typography> }
+                            <TextField onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' />
+                            { error3 && <Typography className={classes.error}>User already exist please login</Typography> }
                             <Button className={classes.loginbtn} onClick={() => toggleOTP()} >Continue</Button>
                             </Box>
                             :
