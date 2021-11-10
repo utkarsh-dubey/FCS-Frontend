@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, TextField, Box, Button, makeStyles, Typography } from '@material-ui/core';
-import { authenticateLogin, authenticateSignup } from '../../service/api';
+import { authenticateLogin, authenticateSignup, sendOtpRequest } from '../../service/api';
 import Modal from "@mui/material/Modal";
+import axios from "axios";
 
 const useStyle = makeStyles({
     component: {
@@ -103,13 +104,16 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     const [ login, setLogin ] = useState(loginInitialValues);
     const [ signup, setSignup ] = useState(signupInitialValues);
     const [ error, showError] = useState(false);
+    const [ error2, showError2] = useState(false);
     const [ account, toggleAccount ] = useState(accountInitialValues.login);
     const [openModal, setOpenModal] = React.useState(false);
-    const [ otp, setOtp] = useState();
+    const [ otp, setOtp] = useState("");
+    const [ isverify, setIsverify] = useState();
     const handleOpen = () => setOpenModal(true);
 
     useEffect(() => {
         showError(false);
+        showError2(false);
     }, [login])
 
     const onValueChange = (e) => {
@@ -138,25 +142,45 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     }
 
     const signupUser = async() => {
-        let response = await authenticateSignup(signup);
-        if(!response) 
-            showError(true);
-        else
+        axios.get(`http://localhost:7000/user/verifyotp?email=${signup.email}&otp=${otp}`).then(res=>setIsverify(res.data.message))
+        if(isverify)
         {
-
-        handleClose();
-        console.log(response);
-        setAccount(signup.firstname);
+            showError2(false);
+            console.log("verify ho gya")
+            // let response = await authenticateSignup(signup)
+            // handleClose();
+            // console.log(response);
+            // setAccount(signup.firstname);
         }
+        else
+            showError2(true);
+            // console.log("verify nhi hua")
+        // let response = await authenticateSignup(signup);
+        // if(!response) 
+        //     showError(true);
+        // else
+        // {
+
+        // handleClose();
+        // console.log(response);
+        // setAccount(signup.firstname);
+        // }
     }
-    const toggleOTP = () => {
+    const toggleOTP = async() => {
         // if (false) {
         // //   navigate('/add/product')
         // } else {
         //     handleClose();
         //   handleOpen();
         // }
-        if(false)
+        // const emailid =
+        // {
+        //     email : signup.email
+        // }
+        let response = await sendOtpRequest(signup.email)
+        console.log(signup.email)
+        console.log(response,"aaajja otp")
+        if(!response)
         {
             showError(true);
         }
@@ -209,7 +233,8 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                             </Box>
                             :
                             <Box className={classes.login}>
-                            <TextField id="standard-basic" label="OTP" value={otp} onChange={(e)=>setOtp(e.target.value)} variant="standard"  />
+                            <TextField id="standard-basic" label="OTP" onChange={(e)=>setOtp(e.target.value)} variant="standard"  />
+                            { error2 && <Typography className={classes.error}>Wrong OTP or OTP expired</Typography> }
                             <Button className={classes.loginbtn} onClick={() => signupUser()}>Submit</Button>
                             
                         </Box>

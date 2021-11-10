@@ -1,9 +1,9 @@
 import { Box, makeStyles, Typography, Button, Grid } from '@material-ui/core';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { Redirect } from "react-router-dom";
 // import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
 import { Link } from 'react-router-dom';
@@ -67,16 +67,26 @@ const useStyle = makeStyles(theme => ({
     }
 }));
 
+var removeCart = {
+    productId: {},
+    quantity: '',
+    _id: ''
+};
+
 const Cart = ({ match, history }) => {
     const classes = useStyle();
     const [data, setData] = React.useState([]);
-
+    const [remove, setRemove] = useState(removeCart);
+    const [redirect, setRedirect] = useState(false);
+    
     React.useEffect(()=>{
         const id = localStorage.getItem('userId');
         axios.get(`http://localhost:7000/cart/${id}`).then(res=>{
             setData(res.data[0].products) 
-            // console.log(res.data[0].products, "{{}}")
+
+            console.log(res.data[0].products, "{{}}")
         });
+        setRedirect(false);
     }, [])
 
     const checkout = async() => {
@@ -86,9 +96,23 @@ const Cart = ({ match, history }) => {
         console.log(response);
         // setAccount(signup.firstname);
     }
+    const releaseCart = async(d) => {
+        // let response = await checkoutCart(localStorage.getItem('userId'));
+        const id = localStorage.getItem('userId');
+        axios.post(`http://localhost:7000/cart/remove/${id}`,d).then(res=>{
+            // setData(res.data[0].products) 
+            // console.log(res.data[0].products, "{{}}")
+        });
+        setRedirect(true);
+        // if(!response) return;
+        // handleClose();
+        // console.log(response);
+        // setAccount(signup.firstname);
+    }
     
 
     return (
+        redirect ? <Redirect to="/" /> :
         <>
         {
             data.length > 0 ? 
@@ -98,6 +122,12 @@ const Cart = ({ match, history }) => {
                 data.map(d=>(
                 <>
                 {/* <h2>{d.productId.name} and Quantity : {d.quantity}</h2> */}
+                {/* {
+                              removeCart._id=d._id,
+                              removeCart.quantity=d.quantity,
+                              removeCart.productId=d.productId
+
+                } */}
                 <Grid item xs={4}>
                     <Card sx={{ maxWidth: 345 }}> 
                         <CardContent>
@@ -107,6 +137,8 @@ const Cart = ({ match, history }) => {
                           <Typography gutterBottom variant="h5" component="div">
                            ₹{d.productId.price}/-
                           </Typography>
+                          
+                          <Button className={classes.placeOrder} onClick={() => releaseCart(d) } >Remove</Button>
                         </CardContent>
                         {/* <h2>{}</h2> */}
                     </Card>
@@ -126,6 +158,7 @@ const Cart = ({ match, history }) => {
         }
         
         </>
+        
 
     )
 }
