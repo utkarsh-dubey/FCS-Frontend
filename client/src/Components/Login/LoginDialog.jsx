@@ -227,15 +227,16 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                         </Box> : 
                         account.view ==='signup' ?
                         <Box className={classes.login}>
-                            <TextField onChange={(e) => onInputChange(e)} name='firstName' label='Enter Firstname' />
+                            <TextField required={true} onChange={(e) => onInputChange(e)} name='firstName' label='Enter Firstname' />
                             <TextField onChange={(e) => onInputChange(e)} name='lastName' label='Enter Lastname' />
                             {/* <TextField onChange={(e) => onInputChange(e)} name='username' label='Enter Username' /> */}
-                            <TextField onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
-                            <TextField type='password' onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
+                            <TextField required={true} type='email' onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
+                            <TextField required={true} type='password' onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
                             <TextField onChange={(e) => onInputChange(e)} name='gender' label='Enter Gender' />
                             <TextField onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' />
                             { error3 && <Typography className={classes.error}>User already exist please login</Typography> }
-                            <Button className={classes.loginbtn} onClick={() => toggleOTP()} >Continue</Button>
+                            {
+                                signup.email.includes('@') &&<Button className={classes.loginbtn} onClick={() => toggleOTP()} >Continue</Button>}
                             </Box>
                             :
                             <Box className={classes.login}>

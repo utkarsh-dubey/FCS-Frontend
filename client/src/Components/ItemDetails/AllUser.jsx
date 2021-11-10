@@ -22,7 +22,8 @@ const AllUser = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
     useEffect(()=>{
-        axios.get(`http://localhost:7000/user/get/users`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>setMainData(res.data));
+      const userId = localStorage.getItem("userId");
+        axios.get(`http://localhost:7000/user/get/users/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>setMainData(res.data));
     }, [])
 
     const [limit, setLimit] = useState(10);

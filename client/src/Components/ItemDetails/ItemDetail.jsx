@@ -101,9 +101,9 @@ const ItemDetail = () => {
   const handleShare = () => {
     var userkiid = localStorage.getItem("userId");
 
-    axios.post(`${url}/product/${userkiid}`, {
-      productId: id
-    }).then(res=>{console.log(res.data)})
+    axios.post(`${url}/product/share/${userkiid}`, {
+      productId: id, email: email
+    },{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data)})
   }
   return (
     <Paper style={{ textAlign: " center", maxWidth: "800px", border: '1px red', height: '500px' }}>
@@ -134,7 +134,7 @@ const ItemDetail = () => {
         <Typography>{itemDetail.price}</Typography>
         <Typography>{itemDetail.description}</Typography>
         {/* <TextField style={{marginTop: '15px'}} value={email} onChange={(e) => setQuantity(e.target.value)} /> */}
-      <FormControl size="large">
+      <FormControl size="large" >
           <InputLabel id="simple-select">Quantity</InputLabel>
           <Select
             labelId="simple-select"
@@ -142,6 +142,7 @@ const ItemDetail = () => {
             onChange={(e) => setQuantity(e.target.value)}
             placeholder="Quantity"
             name="quantity"
+            style = {{width:100}}
           >
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
@@ -154,7 +155,7 @@ const ItemDetail = () => {
           </Button>
         </IconButton>
         <br/>
-        <TextField style={{marginTop: '15px'}} value={email} onChnage={(e)=>setItemDetail(e.target.value)} />
+        <TextField style={{marginTop: '15px'}} value={email} onChange={(e)=>setEmail(e.target.value)} />
         <br />
         <Button onClick={handleShare} >Share</Button>
       </Grid>

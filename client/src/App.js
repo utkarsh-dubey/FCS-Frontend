@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { Home, NotFound } from "./Components/default";
 import Header from "./Components/Header/Header";
 import TemplateProvider from "./templates/TemplateProvider";
@@ -21,6 +21,7 @@ import MyProfile from "./Components/MyProfile/MyProfile";
 
 function App() {
   const [text, setText] = React.useState();
+  const [pdfid, setPdfid] = useState();
 
   return (
     // <div></div>
@@ -37,8 +38,8 @@ function App() {
                 path="/products"
                 component={() => <Products text={text} setText={setText} />}
               />
-              <Route exact path="/upload/product" component={UploadProduct} />
-              <Route exact path="/product/form" component={AddProduct} />
+              <Route exact path="/upload/product" component={() => <UploadProduct setPdfid={setPdfid} /> }/>
+              <Route exact path="/product/form" component={() => <AddProduct pdfid={pdfid} /> } />
               <Route exact path="/product/:id" component={ItemDetail} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/orderfailure" component={OrderFailure} />

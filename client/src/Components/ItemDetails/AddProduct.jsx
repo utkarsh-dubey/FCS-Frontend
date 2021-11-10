@@ -3,7 +3,7 @@ import { Typography, Grid, Paper, TextField, Button, TableCell, TableRow, TableB
 import axios from 'axios';
 import { Link  } from 'react-router-dom';
 
-const AddProduct = () => {
+const AddProduct = ({pdfid}) => {
 
     const [name, setName] = useState();
     const [price, setPrice] = useState();
@@ -42,7 +42,7 @@ const AddProduct = () => {
     category,
     images: images
         }
-        axios.post(`http://localhost:7000/product/add/${userId}?pdfId=618add235138b6f132e0b268`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
+        axios.post(`http://localhost:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
     }
 
     return (
