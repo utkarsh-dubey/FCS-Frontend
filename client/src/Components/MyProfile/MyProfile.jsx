@@ -29,6 +29,8 @@ const MyProfile = () => {
     const [gender, setGender] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [gstNumber, setGstNumber] = useState();
+    const [panNumber, setPanNumber] = useState();
     
     useEffect(() => {
         const userId = localStorage.getItem("userId");
@@ -56,9 +58,11 @@ const MyProfile = () => {
           const payload = {
               firstName: firstName,
               lastName: lastName,
-              email: email
+              gender: gender,
+              gstNumber: gstNumber,
+              panNumber: panNumber
           }
-          axios.post(`http://localhost:7000/user/become/seller/${userId}`, payload).then(res=>console.log(res.data));
+          axios.post(`http://localhost:7000/user/update/${userId}`, payload).then(res=>console.log(res.data));
       }
 
     return (
@@ -87,7 +91,7 @@ const MyProfile = () => {
             fullWidth
             // disabled={true}
             value={lastName}
-            // onChange={(e)=>setName(e.target.value)}
+            onChange={(e)=>setLastName(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -121,7 +125,7 @@ const MyProfile = () => {
             name="gender"
             // label="gender"
             // type="number"
-            // onChange={(e)=>setCategory(e.target.value)}
+            onChange={(e)=>setGender(e.target.value)}
             fullWidth
             value={gender}
             //   onChange={(e) => setMinAge(e.target.value)}data.
