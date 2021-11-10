@@ -40,7 +40,8 @@ const MyProfile = () => {
           .then((res) => {console.log(res.data);
                         setFirstName(res.data.firstName);
                         setLastName(res.data.lastName);
-                        setEmail(res.data.email);});
+                        setEmail(res.data.email);
+                        setGender(res.data.gender);});
         //   .then((res) => {setIsSeller(res.data.isSeller);setIsAdmin(res.data.isAdmin);console.log(res.data, res.data.isAdmin)});
         
         
@@ -75,7 +76,7 @@ const MyProfile = () => {
             fullWidth
             // disabled={true}
             value={firstName}
-            // onChange={(e)=>setFirstName(e.target.value)}
+            onChange={(e)=>setFirstName(e.target.value)}
           ></TextField>
         </Grid>
         <Grid item xs={12} md={6}>
