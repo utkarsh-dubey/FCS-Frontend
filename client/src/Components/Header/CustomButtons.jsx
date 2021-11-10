@@ -220,12 +220,12 @@ const CustomButtons = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box style={{ backgroundColor:'white' }} className={classes.modal}>
-        <TextField textAlign='center' id="standard-basic" label="PAN Number" value={panNumber} onChange={(e)=>setPanNumber(e.target.value)} variant="standard"  />
+        <Box style={{ backgroundColor:'white' }} align ='center' className={classes.modal}>
+        <TextField id="standard-basic" label="PAN Number" value={panNumber} onChange={(e)=>setPanNumber(e.target.value)} variant="standard"  />
         <TextField id="standard-basic" label="GST Number" value={gstNumber} onChange={(e)=>setGstNumber(e.target.value)} variant="standard" />
         
         <Link to="/upload/product" className={classes.container}>
-        <Button onClick={handleSubmit}><h2>Submit</h2></Button>
+        <Button align ='center' onClick={handleSubmit}><h2>Submit</h2></Button>
         </Link>
         </Box>
       </Modal>
