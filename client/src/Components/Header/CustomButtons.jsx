@@ -86,11 +86,11 @@ const CustomButtons = () => {
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
-  const cartDetails = useSelector((state) => state.cart);
+//   const cartDetails = useSelector((state) => state.cart);
   const [isSeller, setIsSeller] = useState();
   const [isAdmin, setIsAdmin] = useState();
 
-  const { cartItems } = cartDetails;
+//   const { cartItems } = cartDetails;
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     axios
@@ -199,9 +199,9 @@ const CustomButtons = () => {
       </Menu>
 
         <Link to="/cart" className={classes.container}>
-          <Badge badgeContent={cartItems?.length} color="secondary">
+          {/* <Badge badgeContent={cartItems?.length} color="secondary"> */}
             <ShoppingCart />
-          </Badge>
+          {/* </Badge> */}
           <Typography style={{ marginLeft: 10 }}>Cart</Typography>
         </Link>
         <LoginDialog open={open} setOpen={setOpen} setAccount={setAccount} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, TextField, Box, Button, makeStyles, Typography } from '@material-ui/core';
 import { authenticateLogin, authenticateSignup } from '../../service/api';
+import Modal from "@mui/material/Modal";
 
 const useStyle = makeStyles({
     component: {
@@ -90,6 +91,10 @@ const accountInitialValues = {
         view: 'signup',
         heading: "Looks like you're new here",
         subHeading: 'Signup to get started'
+    },
+    OTP: {
+        view: 'OTP',
+        heading: "Enter OTP to signup",
     }
 }
 
@@ -99,6 +104,9 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     const [ signup, setSignup ] = useState(signupInitialValues);
     const [ error, showError] = useState(false);
     const [ account, toggleAccount ] = useState(accountInitialValues.login);
+    const [openModal, setOpenModal] = React.useState(false);
+    const [ otp, setOtp] = useState();
+    const handleOpen = () => setOpenModal(true);
 
     useEffect(() => {
         showError(false);
@@ -131,12 +139,33 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
 
     const signupUser = async() => {
         let response = await authenticateSignup(signup);
-        if(!response) return;
+        if(!response) 
+            showError(true);
+        else
+        {
+
         handleClose();
         console.log(response);
         setAccount(signup.firstname);
+        }
     }
-    
+    const toggleOTP = () => {
+        // if (false) {
+        // //   navigate('/add/product')
+        // } else {
+        //     handleClose();
+        //   handleOpen();
+        // }
+        if(false)
+        {
+            showError(true);
+        }
+        else
+        {
+            showError(false);
+        toggleAccount(accountInitialValues.OTP)
+        }
+      };
     const toggleSignup = () => {
         toggleAccount(accountInitialValues.signup);
     }
@@ -166,6 +195,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                             <Button className={classes.requestbtn}>Request OTP</Button>
                             <Typography className={classes.createText} onClick={() => toggleSignup()} >New to Cozmolane? Create an account</Typography>
                         </Box> : 
+                        account.view ==='signup' ?
                         <Box className={classes.login}>
                             <TextField onChange={(e) => onInputChange(e)} name='firstName' label='Enter Firstname' />
                             <TextField onChange={(e) => onInputChange(e)} name='lastName' label='Enter Lastname' />
@@ -174,7 +204,14 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                             <TextField type='password' onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
                             <TextField onChange={(e) => onInputChange(e)} name='gender' label='Enter Gender' />
                             {/* <TextField onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' /> */}
-                            <Button className={classes.loginbtn} onClick={() => signupUser()} >Continue</Button>
+                            { error && <Typography className={classes.error}>User already exist please login</Typography> }
+                            <Button className={classes.loginbtn} onClick={() => toggleOTP()} >Continue</Button>
+                            </Box>
+                            :
+                            <Box className={classes.login}>
+                            <TextField id="standard-basic" label="OTP" value={otp} onChange={(e)=>setOtp(e.target.value)} variant="standard"  />
+                            <Button className={classes.loginbtn} onClick={() => signupUser()}>Submit</Button>
+                            
                         </Box>
                     }
                 </Box>
