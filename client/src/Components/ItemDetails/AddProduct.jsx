@@ -42,7 +42,7 @@ const AddProduct = ({pdfid}) => {
     category,
     images: images
         }
-        axios.post(`http://localhost:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
+        axios.post(`http://localhost:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);window.alert("Product created successfully")})
     }
 
     return (
@@ -53,13 +53,14 @@ const AddProduct = ({pdfid}) => {
         <br />
         <h2>Please click Upload Button to submit the images</h2>
         <input
+        accept="image/png, image/gif, image/jpeg"
           style={{ marginTop: "55px" }}
           type="file"
           name="file"
           onChange={changeHandler}
           multiple
         />
-<input accept="image/png, image/gif, image/jpeg"  style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} multiple />
+{/* <input   style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} multiple /> */}
 
         {pic.length === 2 && (
           <Button onClick={handleClick}>Upload Image</Button>
