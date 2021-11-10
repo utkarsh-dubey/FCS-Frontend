@@ -17,6 +17,7 @@ import Checkout from "./Components/Cart/Checkout";
 import OrderFailure from "./Components/Cart/OrderFailure";
 import Admin from "./Components/Admin/Admin";
 import OrderSuccess from "./Components/Cart/OrderSuccess";
+import MyProfile from "./Components/MyProfile/MyProfile";
 
 function App() {
   const [text, setText] = React.useState();
@@ -46,7 +47,7 @@ function App() {
               <Route exact path="/admin/user/product" component={AllProduct} />
               <Route exact path="/admin/user/pdf" component={AllPdf} />
               <Route exact path="/admin" component={Admin} />
-              <Route exact path="/profile" component={Admin} />
+              <Route exact path="/myProfile" component={MyProfile} />
 
               {/* <Route exact path= '/admin' component={Admin} /> */}
 
