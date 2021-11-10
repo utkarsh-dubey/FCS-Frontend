@@ -13,38 +13,24 @@ const AddProduct = () => {
     const [images, setImages] = useState();
     const [pic, setPic] = useState([]);
     const [imageBinary, setImageBinary] = useState();
+    const [checkIng, setCheckImg] = useState();
 
     const changeHandler = (e) => {
         setPic([...pic, e.target.files[0]])
         // console.log(e.target.files);
     }
-    const getBase64 = file => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-          });
-      };
     console.log(pic, pic.length);
-    if(pic.length===2) {
-        let arr = [];
-        getBase64(pic[0]).then(res=>{
-            // setImageBinary([...imageBinary, res.data])
-            console.log(res)
-            arr.push(res);
-        })
-        getBase64(pic[1]).then(res=>{
-            // setImageBinary([...imageBinary, res.data])
-            arr.push(res);
-        })
-        console.log(arr[0], arr[1], "{{}}")
-        axios.post('http://localhost:7000/products/imageupload', {
-            image: arr
-        }).then(res=>console.log(res.data))
-        setPic([...pic, 'ppp'])
+
+    const handleClick = () =>{
+        const formData = new FormData();
+        console.log(pic)
+        pic.map((p, i)=>formData.append('pic'+i, p))
+        // formData.append('pic', pic);
+        axios.post('http://localhost:7000/product/imageupload', formData).then(res=>setImages(res.data.links));
     }
-    // const [commission, setCommission] = useState();
+
+    
+    
     const handleSubmit = () => {
         const userId = localStorage.getItem("userId");
         const payload = {
@@ -54,7 +40,7 @@ const AddProduct = () => {
     description,
     sellerId: userId,
     category,
-    images: ["https://www.tutsmake.com/wp-content/uploads/2021/06/React-JS-Multiple-Image-Upload-with-Preview.jpg", "https://www.tutsmake.com/wp-content/uploads/2021/06/React-JS-Multiple-Image-Upload-with-Preview.jpg"]
+    images: images
         }
         axios.post(`http://localhost:7000/product/add/${userId}?pdfId=618add235138b6f132e0b268`, payload).then(res=>console.log(res.data))
     }
@@ -63,6 +49,8 @@ const AddProduct = () => {
         <div>
 
 <input style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} multiple />
+
+<Button onClick={handleClick}>Upload Image</Button>
 
             <Paper style={{maxWidth: '500px', marginLeft: '25px', marginTop: '100px', textAlign:"center"}} elsevation={2} >
       
