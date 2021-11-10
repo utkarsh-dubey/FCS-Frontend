@@ -13,7 +13,7 @@ const UploadProduct = () => {
     React.useEffect(()=>{
         const userId = localStorage.getItem("userId");
 
-        axios.get(`http://localhost:7000/pdf/${userId}`).then(res=>{console.log(res.data);setMainData(res.data)})
+        axios.get(`http://localhost:7000/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data)})
     }, [])
 	// const [isFilePicked, setIsFilePicked] = useState(false);
 
@@ -28,7 +28,7 @@ const UploadProduct = () => {
         const formData = new FormData();
         const userId = localStorage.getItem("userId");
         formData.append("pdf", pdfhere);
-        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData).then(res=>console.log(res.data))
+        axios.post(`http://localhost:7000/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
     }
     const handleLimitChange = (event) => {
         setLimit(event.target.value);

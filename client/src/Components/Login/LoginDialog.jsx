@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, TextField, Box, Button, makeStyles, Typography } from '@material-ui/core';
 import { authenticateLogin, authenticateSignup, sendOtpRequest } from '../../service/api';
 import Modal from "@mui/material/Modal";
+// import { alertService } from '../_services';
 import axios from "axios";
 
 const useStyle = makeStyles({
@@ -132,7 +133,9 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             showError(true);
         else {
             showError(false);
+            // alertService.success('Success!!', { autoClose, keepAfterRouteChange })
             handleClose();
+            window.alert(response.data);
             console.log(response);
             localStorage.setItem("auth_token",response.data.auth_token);
             localStorage.setItem("firstName",response.data.user.firstName);
@@ -148,6 +151,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         if(isverify)
         {
             showError2(false);
+            
             console.log("verify ho gya")
             let response = await authenticateSignup(signup)
             handleClose();
