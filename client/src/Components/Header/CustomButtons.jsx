@@ -120,6 +120,7 @@ const CustomButtons = () => {
           isSeller: true
       }
       axios.post(`http://localhost:7000/user/become/seller/${userId}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data));
+      handleClose();
   }
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -215,7 +216,10 @@ const CustomButtons = () => {
         <Box className={classes.modal}>
         <TextField id="standard-basic" label="PAN Number" value={panNumber} onChange={(e)=>setPanNumber(e.target.value)} variant="standard"  />
         <TextField id="standard-basic" label="GST Number" value={gstNumber} onChange={(e)=>setGstNumber(e.target.value)} variant="standard" />
+        
+        <Link to="/upload/product" className={classes.container}>
         <Button onClick={handleSubmit}>Submit</Button>
+        </Link>
         </Box>
       </Modal>
     </>

@@ -43,6 +43,7 @@ const UploadProduct = () => {
         <div style={{textAlign:'center', marginTop:'150px'}} >
             <Typography>Add Your Pdf Here</Typography>
             <input style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} />
+            
             <Button onClick={handleSubmit} >Submit</Button>
 			<div>
             <Typography style={{marginTop:'55px'}}>Your recent pdf</Typography>
@@ -78,7 +79,7 @@ const UploadProduct = () => {
                 //   selected={selectedCustomerIds.indexOf(proc.id) !== -1}
                 >
                   <TableCell>
-                    {/* {proc.user_id?proc.user_id.username:''} */}
+                    {proc.name}
                   </TableCell>
                   
                   <TableCell>
