@@ -22,6 +22,7 @@ import MyProfile from "./Components/MyProfile/MyProfile";
 function App() {
   const [text, setText] = React.useState();
   const [pdfid, setPdfid] = useState();
+  const [sessionId, setSessionId] = useState();
   console.log("pdf", pdfid)
 
   return (
@@ -42,9 +43,9 @@ function App() {
               <Route exact path="/upload/product" component={() => <UploadProduct setPdfid={setPdfid} /> }/>
               <Route exact path="/product/form" component={() => <AddProduct pdfid={pdfid} /> } />
               <Route exact path="/product/:id" component={ItemDetail} />
-              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/checkout" component={() => <Checkout setSessionId={setSessionId} /> } />
               <Route exact path="/orderfailure" component={OrderFailure} />
-              <Route exact path="/ordersuccess" component={OrderSuccess} />
+              <Route exact path="/ordersuccess" component={() => <OrderSuccess sessionId={sessionId} /> } />
               <Route exact path="/admin/user/all" component={AllUser} />
               <Route exact path="/admin/user/product" component={AllProduct} />
               <Route exact path="/admin/user/pdf" component={AllPdf} />
