@@ -11,6 +11,7 @@ import {
   Paper
 } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
+import axios from 'axios'
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -52,6 +53,8 @@ const cartInitialValues = {
 
 const ItemDetail = () => {
   const { id } = useParams();
+  const url = 'http://localhost:7000';
+
   console.log(id);
   const [itemDetail, setItemDetail] = useState([]);
   const [cart, setCart] = useState(cartInitialValues);
@@ -62,10 +65,9 @@ const ItemDetail = () => {
   // }
 
   const classes = useStyle();
-  const fetchItemDetail = async () => {
-    let { data } = await getProductById(id);
-    setItemDetail(data);
-    console.log(data);
+  const fetchItemDetail = () => {
+    axios.get(`${url}/product/${id}`).then(res=>setItemDetail(res.data));
+    // console.log(data);
   };
   const addToCart = async () => {
     var payload = {
