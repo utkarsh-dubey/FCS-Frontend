@@ -149,10 +149,10 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         {
             showError2(false);
             console.log("verify ho gya")
-            // let response = await authenticateSignup(signup)
-            // handleClose();
-            // console.log(response);
-            // setAccount(signup.firstname);
+            let response = await authenticateSignup(signup)
+            handleClose();
+            console.log(response);
+            setAccount(signup.firstname);
         }
         else
             showError2(true);

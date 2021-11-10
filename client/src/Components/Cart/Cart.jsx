@@ -81,7 +81,7 @@ const Cart = ({ match, history }) => {
     
     React.useEffect(()=>{
         const id = localStorage.getItem('userId');
-        axios.get(`http://localhost:7000/cart/${id}`).then(res=>{
+        axios.get(`http://localhost:7000/cart/${id}`, {headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             setData(res.data[0].products) 
 
             console.log(res.data[0].products, "{{}}")
