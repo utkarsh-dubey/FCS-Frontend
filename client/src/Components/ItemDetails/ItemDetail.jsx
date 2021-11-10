@@ -25,7 +25,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Select, FormControl, InputLabel, MenuItem } from "@mui/material";
+import { Select, FormControl, InputLabel, MenuItem, TextField } from "@mui/material";
 
 const useStyle = makeStyles({
   select: {
@@ -59,6 +59,8 @@ const ItemDetail = () => {
   const [itemDetail, setItemDetail] = useState([]);
   const [cart, setCart] = useState(cartInitialValues);
   const [quantity, setQuantity] = useState(0);
+  const [images, setImages] = useState([]);
+  const [email, setEmail] = useState();
   // const onValueChange = (e) => {
   //     console.log("quantity:",e.target.value)
   //     setCart({ ...cart, [e.target.name]: e.target.value });
@@ -66,7 +68,11 @@ const ItemDetail = () => {
 
   const classes = useStyle();
   const fetchItemDetail = () => {
-    axios.get(`${url}/product/${id}`).then(res=>setItemDetail(res.data));
+    axios.get(`${url}/product/${id}`).then(res=>{
+      setItemDetail(res.data);
+      console.log(res.data, "{{}}");
+      setImages(res.data.images);
+    });
     // console.log(data);
   };
   const addToCart = async () => {
@@ -90,7 +96,14 @@ const ItemDetail = () => {
   useEffect(() => {
     fetchItemDetail();
   }, []);
-  console.log("qwerty", itemDetail._id);
+  console.log("qwerty", itemDetail);
+  const handleShare = () => {
+    var userkiid = localStorage.getItem("userId");
+
+    axios.post(`${url}/product/${userkiid}`, {
+      productId: id
+    }).then(res=>{console.log(res.data)})
+  }
   return (
     <Paper style={{ textAlign: " center", maxWidth: "800px", border: '1px red', height: '500px' }}>
       <Typography>{itemDetail.name}</Typography>
@@ -103,24 +116,31 @@ const ItemDetail = () => {
         alignItems="center"
       >
         <Grid item xs={6} >
-          <img
-            // component="img"
-            // height="140"
-            src="https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100"
+          {images.length>0 && images.map(m => (
+            <>
+            <img
+            height="160"
+            src={m}
             alt="Paella dish"
           />
+            </>
+            
+          ))}
+          
         </Grid>
       
       <Grid item xs={6} >
         <Typography>{itemDetail.price}</Typography>
         <Typography>{itemDetail.description}</Typography>
-      <FormControl size="medium">
+        {/* <TextField style={{marginTop: '15px'}} value={email} onChange={(e) => setQuantity(e.target.value)} /> */}
+      <FormControl size="large">
           <InputLabel id="simple-select">Quantity</InputLabel>
           <Select
             labelId="simple-select"
             id="quantity"
             onChange={(e) => setQuantity(e.target.value)}
             defaultValue={0}
+            placeholder="Quantity"
             name="quantity"
           >
             <MenuItem value={1}>1</MenuItem>
@@ -133,6 +153,10 @@ const ItemDetail = () => {
             Add to Cart
           </Button>
         </IconButton>
+        <br/>
+        <TextField style={{marginTop: '15px'}} value={email} onChnage={(e)=>setItemDetail(e.target.value)} />
+        <br />
+        <Button onClick={handleShare} >Share</Button>
       </Grid>
       </Grid>
     </Paper>

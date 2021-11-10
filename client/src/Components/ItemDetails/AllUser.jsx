@@ -31,6 +31,11 @@ const AllUser = () => {
     setLimit(event.target.value);
   };
 
+  const handleUser = (id) => {
+    const userId = localStorage.getItem("userId");
+      axios.post(`http://localhost:7000/admin/banuser/${userId}?user=${id}`)
+  }
+
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
@@ -97,16 +102,18 @@ const AllUser = () => {
                   {/* <TableCell>
                     {getShipmentStatus(proc.shipment ? proc.shipment.shipped_on ?proc.shipment.shipped_on :'NA':'NA')}
                   </TableCell> */}
-                  <TableCell>
+                  {/* <TableCell>
                   <Button variant="contained" onClick={handleOpen} color="primary" >
                           View
                   </Button>
                       
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell>
-                  <Button variant="contained" color="primary" >
-                          Delete
-                  </Button>
+                  {proc.isAllowed ? <Button onClick={()=>handleUser(proc._id)} variant="contained" color="primary" >
+                          Bhag Yha se
+                  </Button> : <Button onClick={()=>handleUser(proc._id)} variant="contained" color="primary" >
+                          Banned
+                  </Button>}
                       
                   </TableCell>
                 </TableRow>
