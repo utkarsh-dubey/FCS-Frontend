@@ -26,7 +26,7 @@ const AddProduct = () => {
         console.log(pic)
         pic.map((p, i)=>formData.append('pic'+i, p))
         // formData.append('pic', pic);
-        axios.post('http://localhost:7000/product/imageupload', formData).then(res=>setImages(res.data.links));
+        axios.post('http://localhost:7000/product/imageupload', formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>setImages(res.data.links));
     }
 
     
@@ -42,7 +42,7 @@ const AddProduct = () => {
     category,
     images: images
         }
-        axios.post(`http://localhost:7000/product/add/${userId}?pdfId=618add235138b6f132e0b268`, payload).then(res=>console.log(res.data))
+        axios.post(`http://localhost:7000/product/add/${userId}?pdfId=618add235138b6f132e0b268`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data))
     }
 
     return (

@@ -36,21 +36,28 @@ export const getProducts = async (word) => {
 
 export const addItemToCart= async (item) => {
     try {
-        return await axios.post(`${url}/cart/add`, item)
+        return await axios.post(`${url}/cart/add`, item,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
     } catch (error) {
         console.log('error while calling Add to Cart API: ', error);
     }
 }
+// export const removeItemFromCart= async (item) => {
+//     try {
+//         return await axios.post(`${url}/cart/remove/${}`, item)
+//     } catch (error) {
+//         console.log('error while calling Add to Cart API: ', error);
+//     }
+// }
 export const showCart= async (id) => {
     try {
-        return await axios.get(`${url}/cart/${id}`)
+        return await axios.get(`${url}/cart/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
     } catch (error) {
         console.log('error while calling Show cart API: ', error);
     }
 }
 export const checkoutCart= async (id) => {
     try {
-        return await axios.get(`${url}/cart/checkout/${id}`)
+        return await axios.get(`${url}/cart/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
     } catch (error) {
         console.log('error while calling Show cart API: ', error);
     }
@@ -58,7 +65,7 @@ export const checkoutCart= async (id) => {
 export  const payUsingStripe = async (id) => {
     try {
         console.log('payment api');
-        let response = await axios.get(`${url}/payment/checkout/${id}`);
+        let response = await axios.get(`${url}/payment/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}});
         console.log(response.data);
         return response.data;
     } catch (error) {
@@ -74,6 +81,13 @@ export const sendOtpRequest= async (email) => {
     }
 }
 
+export const verifyOtpRequest= async (email) => {
+    try {
+        return await axios.get(`${url}/user/sendotp?email=${email}&otp=$`)
+    } catch (error) {
+        console.log('error while sending OTP: ', error);
+    }
+}
 // {
 //     headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}` }
 // }

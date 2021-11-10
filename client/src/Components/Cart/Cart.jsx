@@ -80,6 +80,7 @@ const Cart = ({ match, history }) => {
     const [redirect, setRedirect] = useState(false);
     
     React.useEffect(()=>{
+        
         const id = localStorage.getItem('userId');
         axios.get(`http://localhost:7000/cart/${id}`, {headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             setData(res.data[0].products) 
@@ -99,7 +100,7 @@ const Cart = ({ match, history }) => {
     const releaseCart = async(d) => {
         // let response = await checkoutCart(localStorage.getItem('userId'));
         const id = localStorage.getItem('userId');
-        axios.post(`http://localhost:7000/cart/remove/${id}`,d).then(res=>{
+        axios.post(`http://localhost:7000/cart/remove/${id}`,d,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             // setData(res.data[0].products) 
             // console.log(res.data[0].products, "{{}}")
         });

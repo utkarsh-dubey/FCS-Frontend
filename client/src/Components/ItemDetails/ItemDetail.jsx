@@ -76,17 +76,18 @@ const ItemDetail = () => {
     // console.log(data);
   };
   const addToCart = async () => {
-    var payload = {
-      userId: "",
-      quantity: "",
-      productId: "",
-    };
     var userkiid = localStorage.getItem("userId");
-    payload.userId = userkiid;
-    payload.productId = itemDetail._id;
-    payload.quantity = quantity;
+    var payload = {
+      userId: userkiid,
+      quantity: quantity,
+      productId: itemDetail._id,
+    };
+    window.alert("Item added to cart")
+    // payload.userId = ;
+    // payload.productId = ;
+    // payload.quantity = ;
     setCart(payload);
-    let response = await addItemToCart(cart);
+    let response = await addItemToCart(payload);
 
     // setItemDetail(data);
     console.log(response, "{{}}");
@@ -139,7 +140,6 @@ const ItemDetail = () => {
             labelId="simple-select"
             id="quantity"
             onChange={(e) => setQuantity(e.target.value)}
-            defaultValue={0}
             placeholder="Quantity"
             name="quantity"
           >
@@ -149,7 +149,7 @@ const ItemDetail = () => {
           </Select>
         </FormControl>
         <IconButton aria-label="add to cart">
-          <Button className={classes.addtocartbtn} onClick={() => addToCart()}>
+          <Button className={classes.addtocartbtn} onClick={quantity?() => addToCart():()=>window.alert("Please select quantity")}>
             Add to Cart
           </Button>
         </IconButton>

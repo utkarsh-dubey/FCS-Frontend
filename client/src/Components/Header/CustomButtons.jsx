@@ -94,7 +94,7 @@ const CustomButtons = () => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     axios
-      .get(`http://localhost:7000/user/user/${userId}`)
+      .get(`http://localhost:7000/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {setIsSeller(res.data.isSeller);setIsAdmin(res.data.isAdmin);console.log(res.data, res.data.isAdmin)});
 
     var userkiid = localStorage.getItem("firstName");
@@ -119,9 +119,9 @@ const CustomButtons = () => {
           panNumber: panNumber,
           isSeller: true
       }
-      axios.post(`http://localhost:7000/user/become/seller/${userId}`, payload).then(res=>console.log(res.data));
+      axios.post(`http://localhost:7000/user/become/seller/${userId}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data));
       handleClose();
-    }
+  }
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
