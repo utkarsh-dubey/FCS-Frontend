@@ -61,7 +61,7 @@ const useStyle = makeStyles(theme => ({
     }
 }));
 
-const Checkout = ({ match, history }) => {
+const Checkout = ({ match, history, setSessionId }) => {
     const classes = useStyle();
     const [data, setData] = React.useState([]);
     const [address, setAddress] = useState([]);
@@ -85,6 +85,7 @@ const Checkout = ({ match, history }) => {
         let response = await payUsingStripe(localStorage.getItem('userId'));
         // if(!response) return;
         // handleClose();
+        setSessionId(response.sessionId)
         window.location.href = response.url
         console.log(response);
         // setAccount(signup.firstname);

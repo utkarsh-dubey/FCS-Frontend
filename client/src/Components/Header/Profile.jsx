@@ -65,3 +65,4 @@ const Profile = ({ account, setAccount }) => {
 }
 
 export default Profile;
+
