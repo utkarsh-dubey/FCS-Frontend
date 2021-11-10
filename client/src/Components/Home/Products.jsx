@@ -77,7 +77,7 @@ const Products = ({text, setText}) => {
       <CardMedia
         component="img"
         height="140"
-        image="https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100"
+        image={t.images[0]}
         alt="green iguana"
       />
       <CardContent>
