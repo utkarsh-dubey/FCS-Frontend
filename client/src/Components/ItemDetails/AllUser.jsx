@@ -111,7 +111,7 @@ const AllUser = () => {
                   </TableCell> */}
                   <TableCell>
                   {proc.isAllowed ? <Button onClick={()=>handleUser(proc._id)} variant="contained" color="primary" >
-                          Bhag Yha se
+                          Ban User
                   </Button> : <Button onClick={()=>handleUser(proc._id)} variant="contained" color="primary" >
                           Banned
                   </Button>}
