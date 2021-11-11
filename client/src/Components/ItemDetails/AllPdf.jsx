@@ -92,9 +92,9 @@ const AllPdf = () => {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Quantity</TableCell>
-                <TableCell>Price</TableCell>
-                <TableCell>commission</TableCell>
+                <TableCell>Download</TableCell>
+                <TableCell>Approve Status</TableCell>
+                <TableCell>Reject Status</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -109,18 +109,18 @@ const AllPdf = () => {
                       >
                         <TableCell>{proc.name}</TableCell>
 
-                        <TableCell>
-                          {/* {getStatus(proc.status)} */}
+                        {/* <TableCell>
+                          
                           {proc.quantity}
                         </TableCell>
                         <TableCell>
-                          {/* {getStatus(proc.status)} */}
+                        
                           {proc.price}
                         </TableCell>
                         <TableCell>
-                          {/* {getStatus(proc.status)} */}
+                          
                           {proc.commission}
-                        </TableCell>
+                        </TableCell> */}
                         {/* <TableCell>
                     {getShipmentStatus(proc.shipment ? proc.shipment.shipped_on ?proc.shipment.shipped_on :'NA':'NA')}
                   </TableCell> */}
