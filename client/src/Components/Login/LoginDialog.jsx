@@ -147,20 +147,32 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     }
 
     const signupUser = async() => {
-        axios.get(`http://localhost:7000/user/verifyotp?email=${signup.email}&otp=${otp}`).then(res=>setIsverify(res.data.message))
-        if(isverify)
-        {
-            showError2(false);
-            
+        axios.get(`http://localhost:7000/user/verifyotp?email=${signup.email}&otp=${otp}`).then(async(res)=>{
+            setIsverify(true);
+            window.alert("OTP verified");
             console.log("verify ho gya")
             let response = await authenticateSignup(signup)
             handleClose();
             console.log(response);
-            window.alert("Account created successfully")
+            window.alert("Account created successfully, Kindly go and login!")
             setAccount(signup.firstname);
-        }
-        else
+    }).catch((err)=>{
             showError2(true);
+            window.alert("OTP not verified!, Retry signing up");
+        })
+        // if(isverify)
+        // {
+        //     // showError2(false);
+            
+        //     console.log("verify ho gya")
+        //     let response = await authenticateSignup(signup)
+        //     handleClose();
+        //     console.log(response);
+        //     window.alert("Account created successfully")
+        //     setAccount(signup.firstname);
+        // }
+        // else
+        //     showError2(true);
             // console.log("verify nhi hua")
         // let response = await authenticateSignup(signup);
         // if(!response) 
@@ -242,9 +254,9 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
                             :
                             <Box className={classes.login}>
                             <TextField id="standard-basic" label="OTP" onChange={(e)=>setOtp(e.target.value)} variant="standard"  />
-                            { error2 && <Typography className={classes.error}>Wrong OTP or OTP expired</Typography> }
+                            { (error2)?<Typography className={classes.error}>Wrong OTP or OTP expired</Typography>:"" }
                             <Button className={classes.loginbtn} onClick={() => signupUser()}>Submit</Button>
-                            
+                        
                         </Box>
                     }
                 </Box>
