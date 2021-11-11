@@ -33,7 +33,7 @@ const AllProduct = () => {
 
   const handleUser = (id) => {
     const userId = localStorage.getItem("userId");
-      axios.post(`http://localhost:7000/admin/banproduct/${userId}?product=${id}`)
+      axios.post(`http://localhost:7000/admin/banproduct/${userId}?product=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
   }
 
   const handlePageChange = (event, newPage) => {
