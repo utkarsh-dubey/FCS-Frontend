@@ -196,6 +196,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         // {
         //     email : signup.email
         // }
+        showError2(false);
         let response = await sendOtpRequest(signup.email)
         console.log(signup.email)
         console.log(response,"aaajja otp")
