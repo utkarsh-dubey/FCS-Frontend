@@ -1,3 +1,4 @@
+import { WifiTetheringErrorRoundedTwoTone } from '@mui/icons-material';
 import axios from 'axios';
 
 const url = 'https://192.168.2.251:7000';
@@ -29,7 +30,18 @@ export const getProducts = async (word) => {
     try {
         return await axios.get(`${url}/product/?search=${word}`);
     } catch (error) {
+        
         console.log('Error while getting products response', error);
+        if (window.confirm('Please click OK and allow unsecure to run the website')) 
+            {
+            window.open('https://192.168.2.251:7000/')
+            if (window.confirm(' Did you proceed unsafe?.. Press OK to continue')) 
+            {
+            window.location.reload();
+            
+            };
+            };
+        
     }
 }
 

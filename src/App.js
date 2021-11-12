@@ -20,7 +20,7 @@ import OrderSuccess from "./Components/Cart/OrderSuccess";
 import MyProfile from "./Components/MyProfile/MyProfile";
 
 function App() {
-  const [text, setText] = React.useState();
+  const [text, setText] = React.useState("");
   const [pdfid, setPdfid] = useState();
   const [sessionId, setSessionId] = useState();
   console.log("pdf", pdfid)

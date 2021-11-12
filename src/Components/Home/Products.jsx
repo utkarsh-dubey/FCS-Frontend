@@ -52,8 +52,8 @@ const Products = ({text, setText}) => {
   const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
   const fetchProducts = async () => {
-    let { data } =text?  await getProducts(text): await getProducts("");
-    setProducts(data);
+    let response =await getProducts(text) || {data:[]};
+    setProducts(response.data);
     // console.log(data);
   };
 

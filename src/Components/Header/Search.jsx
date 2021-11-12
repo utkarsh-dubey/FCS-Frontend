@@ -51,7 +51,7 @@ const Search = ({text, setText}) => {
     const [products, setProducts] = useState([]);
 
     const fetchProducts = async() => {
-      let { data } = await getProducts("");
+      let { data } = await getProducts("") || {data:[]};
       // console.log(data, "{{}}")
       setProducts(data);
       // console.log(data);
