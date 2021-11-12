@@ -53,7 +53,7 @@ const cartInitialValues = {
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const url = 'https://fcs.myonlineedu.in:7000';
+  const url = 'https://192.168.2.251:7000';
 
   // console.log(id);
   const [itemDetail, setItemDetail] = useState([]);

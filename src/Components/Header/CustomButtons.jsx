@@ -97,7 +97,7 @@ const CustomButtons = () => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     axios
-      .get(`https://fcs.myonlineedu.in:7000/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+      .get(`https://192.168.2.251:7000/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {setIsSeller(res.data.isSeller);setIsAdmin(res.data.isAdmin)});
 
     var userkiid = localStorage.getItem("firstName");
@@ -122,7 +122,7 @@ const CustomButtons = () => {
           panNumber: panNumber,
           isSeller: true
       }
-      axios.post(`https://fcs.myonlineedu.in:7000/user/become/seller/${userId}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data));
+      axios.post(`https://192.168.2.251:7000/user/become/seller/${userId}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data));
       handleClose();
   }
 

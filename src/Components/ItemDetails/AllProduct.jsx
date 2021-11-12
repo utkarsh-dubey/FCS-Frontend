@@ -33,7 +33,7 @@ const AllProduct = () => {
 
   const handleUser = (id) => {
     const userId = localStorage.getItem("userId");
-      axios.post(`https://fcs.myonlineedu.in:7000/admin/banproduct/${userId}?product=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+      axios.post(`https://192.168.2.251:7000/admin/banproduct/${userId}?product=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
   }
 
   const handlePageChange = (event, newPage) => {
