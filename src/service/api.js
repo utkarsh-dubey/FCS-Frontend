@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const url = 'https://fcs.myonlineedu.in:7000';
+const url = 'http://192.168.2.251:7000/';
 
 export const authenticateLogin = async (user) => {
     try {
-        console.log(user)
         return await axios.post(`${url}/user/user/login`, user)
     } catch (error) {
         console.log('error while calling login API: ', error);
