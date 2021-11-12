@@ -73,7 +73,7 @@ const Checkout = ({ match, history, setSessionId }) => {
         // axios.get(`https://fcs.myonlineedu.in:7000/cart/checkout/${id}`)
         axios.get(`https://fcs.myonlineedu.in:7000/cart/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             setData(res.data[0].products) 
-            console.log(res)
+            // console.log(res)
             // console.log(res.data[0].products, "{{}}")
         });
         axios.get(`https://fcs.myonlineedu.in:7000/address/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
@@ -87,7 +87,7 @@ const Checkout = ({ match, history, setSessionId }) => {
         // handleClose();
         setSessionId(response.sessionId)
         window.location.href = response.url
-        console.log(response);
+        // console.log(response);
         // setAccount(signup.firstname);
     }
     

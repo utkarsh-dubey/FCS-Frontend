@@ -48,13 +48,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = ({text, setText}) => {
   const [products, setProducts] = useState([]);
-  console.log(text, "{{}}")
+  // console.log(text, "{{}}")
   const [searchWord,setSearchWord] = useState("");
   const classes = useStyles();
   const fetchProducts = async () => {
     let { data } =text?  await getProducts(text): await getProducts("");
     setProducts(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const Products = ({text, setText}) => {
     fetchProducts();
   }, []);
   // renderTrails = () => {
-  console.log("TRAILS", products);
+  // console.log("TRAILS", products);
   if (products) {
 
 

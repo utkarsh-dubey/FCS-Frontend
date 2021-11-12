@@ -28,10 +28,10 @@ const UploadProduct = ({setPdfid}) => {
     const changeHandler = (event) => {
 		setPdfhere(event.target.files[0]);
 		// setIsSelected(true);.
-        console.log(event.target.files[0]);
+        // console.log(event.target.files[0]);
 	};
     const handleSubmit = () => {
-        console.log("{{}{}{}{}}")
+        // console.log("{{}{}{}{}}")
 
         const formData = new FormData();
         const userId = localStorage.getItem("userId");

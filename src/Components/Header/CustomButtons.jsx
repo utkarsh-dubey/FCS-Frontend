@@ -98,7 +98,7 @@ const CustomButtons = () => {
     const userId = localStorage.getItem("userId");
     axios
       .get(`https://fcs.myonlineedu.in:7000/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
-      .then((res) => {setIsSeller(res.data.isSeller);setIsAdmin(res.data.isAdmin);console.log(res.data, res.data.isAdmin)});
+      .then((res) => {setIsSeller(res.data.isSeller);setIsAdmin(res.data.isAdmin)});
 
     var userkiid = localStorage.getItem("firstName");
     if (userkiid) setAccount(userkiid);

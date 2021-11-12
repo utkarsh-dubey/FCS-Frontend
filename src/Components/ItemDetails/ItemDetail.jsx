@@ -55,7 +55,7 @@ const ItemDetail = () => {
   const { id } = useParams();
   const url = 'https://fcs.myonlineedu.in:7000';
 
-  console.log(id);
+  // console.log(id);
   const [itemDetail, setItemDetail] = useState([]);
   const [cart, setCart] = useState(cartInitialValues);
   const [quantity, setQuantity] = useState(0);
@@ -70,7 +70,7 @@ const ItemDetail = () => {
   const fetchItemDetail = () => {
     axios.get(`${url}/product/${id}`).then(res=>{
       setItemDetail(res.data);
-      console.log(res.data, "{{}}");
+      // console.log(res.data, "{{}}");
       setImages(res.data.images);
     });
     // console.log(data);
@@ -90,14 +90,14 @@ const ItemDetail = () => {
     let response = await addItemToCart(payload);
 
     // setItemDetail(data);
-    console.log(response, "{{}}");
+    // console.log(response, "{{}}");
   };
-  console.log("cartvalue", cart);
+  // console.log("cartvalue", cart);
 
   useEffect(() => {
     fetchItemDetail();
   }, []);
-  console.log("qwerty", itemDetail);
+  // console.log("qwerty", itemDetail);
   const handleShare = () => {
     var userkiid = localStorage.getItem("userId");
 

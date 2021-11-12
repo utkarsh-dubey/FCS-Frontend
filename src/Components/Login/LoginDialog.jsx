@@ -136,7 +136,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             // alertService.success('Success!!', { autoClose, keepAfterRouteChange })
             handleClose();
             window.alert("Logged in Successfully");
-            console.log(response);
+            // console.log(response);
             localStorage.setItem("auth_token",response.data.auth_token);
             localStorage.setItem("firstName",response.data.user.firstName);
             localStorage.setItem("userId", response.data.user._id);
@@ -150,10 +150,10 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         axios.get(`https://fcs.myonlineedu.in:7000/user/verifyotp?email=${signup.email}&otp=${otp}`).then(async(res)=>{
             setIsverify(true);
             window.alert("OTP verified");
-            console.log("verify ho gya")
+            // console.log("verify ho gya")
             let response = await authenticateSignup(signup)
             handleClose();
-            console.log(response);
+            // console.log(response);
             window.alert("Account created successfully, Kindly go and login!")
             setAccount(signup.firstname);
     }).catch((err)=>{
@@ -198,8 +198,8 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
         // }
         showError2(false);
         let response = await sendOtpRequest(signup.email)
-        console.log(signup.email)
-        console.log(response,"aaajja otp")
+        // console.log(signup.email)
+        // console.log(response,"aaajja otp")
         if(!response)
         {
             showError3(true);

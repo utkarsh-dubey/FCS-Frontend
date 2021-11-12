@@ -19,11 +19,11 @@ const AddProduct = ({pdfid}) => {
         setPic([...pic, e.target.files[0]])
         // console.log(e.target.files);
     }
-    console.log(pic, pic.length);
+    // console.log(pic, pic.length);
 
     const handleClick = () =>{
         const formData = new FormData();
-        console.log(pic)
+        // console.log(pic)
         pic.map((p, i)=>formData.append('pic'+i, p))
         // formData.append('pic', pic);
         axios.post('https://fcs.myonlineedu.in:7000/product/imageupload', formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{setImages(res.data.links);window.alert("Images uploaded")});
@@ -42,7 +42,7 @@ const AddProduct = ({pdfid}) => {
     category,
     images: images
         }
-        axios.post(`https://fcs.myonlineedu.in:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);window.alert("Product created successfully")})
+        axios.post(`https://fcs.myonlineedu.in:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{window.alert("Product created successfully")})
     }
 
     return (

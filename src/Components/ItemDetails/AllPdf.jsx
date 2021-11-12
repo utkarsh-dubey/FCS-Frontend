@@ -39,7 +39,7 @@ const AllPdf = () => {
     const userId = localStorage.getItem("userId");
     axios.get(`https://fcs.myonlineedu.in:7000/pdf/all/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((res) => {
       setMainData(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     });
   }, []);
 
@@ -54,7 +54,7 @@ const AllPdf = () => {
     axios
       .post(`https://fcs.myonlineedu.in:7000/admin/approve/${userId}?pdfId=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       });
   };
   const handleReject = (id) => {
@@ -62,7 +62,7 @@ const AllPdf = () => {
     axios
       .post(`https://fcs.myonlineedu.in:7000/admin/reject/${userId}?pdfId=${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       });
   };
 

@@ -54,12 +54,12 @@ const Search = ({text, setText}) => {
       let { data } = await getProducts("");
       // console.log(data, "{{}}")
       setProducts(data);
-      console.log(data);
+      // console.log(data);
   }
   const searchDialog = async() => {
     setText(textBox)
   }
-    console.log("textt",text)
+    // console.log("textt",text)
     useEffect(() => {
       fetchProducts();
     }, []);

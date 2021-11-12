@@ -35,9 +35,9 @@ const MyProfile = () => {
     
     useEffect(() => {
         const userId = localStorage.getItem("userId");
-        console.log(userId);
+        // console.log(userId);
         var userfirstname = localStorage.getItem("firstName");
-        console.log(userfirstname);
+        // console.log(userfirstname);
         axios
           .get(`https://fcs.myonlineedu.in:7000/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
           .then((res) => {console.log(res.data);
