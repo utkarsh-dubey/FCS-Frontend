@@ -37,7 +37,7 @@ const AllPdf = () => {
   const handleClose = () => setOpen(false);
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    axios.get(`http://localhost:7000/pdf/all/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((res) => {
+    axios.get(`http://18.205.236.51:7000/pdf/all/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((res) => {
       setMainData(res.data);
       console.log(res.data);
     });
@@ -52,7 +52,7 @@ const AllPdf = () => {
   const handleApprove = (id) => {
     const userId = localStorage.getItem("userId");
     axios
-      .post(`http://localhost:7000/admin/approve/${userId}?pdfId=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+      .post(`http://18.205.236.51:7000/admin/approve/${userId}?pdfId=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {
         console.log(res.data);
       });
@@ -60,7 +60,7 @@ const AllPdf = () => {
   const handleReject = (id) => {
     const userId = localStorage.getItem("userId");
     axios
-      .post(`http://localhost:7000/admin/reject/${userId}?pdfId=${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+      .post(`http://18.205.236.51:7000/admin/reject/${userId}?pdfId=${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {
         console.log(res.data);
       });

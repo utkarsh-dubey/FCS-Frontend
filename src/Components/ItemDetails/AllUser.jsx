@@ -23,7 +23,7 @@ const AllUser = () => {
   const handleClose = () => setOpen(false);
     useEffect(()=>{
       const userId = localStorage.getItem("userId");
-        axios.get(`http://localhost:7000/user/get/users/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>setMainData(res.data));
+        axios.get(`http://18.205.236.51:7000/user/get/users/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>setMainData(res.data));
     }, [])
 
     const [limit, setLimit] = useState(10);
@@ -34,7 +34,7 @@ const AllUser = () => {
 
   const handleUser = (id) => {
     const userId = localStorage.getItem("userId");
-      axios.post(`http://localhost:7000/admin/banuser/${userId}?user=${id}`)
+      axios.post(`http://18.205.236.51:7000/admin/banuser/${userId}?user=${id}`)
   }
 
   const handlePageChange = (event, newPage) => {

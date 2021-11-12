@@ -147,7 +147,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
     }
 
     const signupUser = async() => {
-        axios.get(`http://localhost:7000/user/verifyotp?email=${signup.email}&otp=${otp}`).then(async(res)=>{
+        axios.get(`http://18.205.236.51:7000/user/verifyotp?email=${signup.email}&otp=${otp}`).then(async(res)=>{
             setIsverify(true);
             window.alert("OTP verified");
             console.log("verify ho gya")

@@ -82,7 +82,7 @@ const Cart = ({ match, history }) => {
     React.useEffect(()=>{
         
         const id = localStorage.getItem('userId');
-        axios.get(`http://localhost:7000/cart/${id}`, {headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
+        axios.get(`http://18.205.236.51:7000/cart/${id}`, {headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             setData(res.data[0].products) 
 
             console.log(res.data[0].products, "{{}}")
@@ -94,7 +94,7 @@ const Cart = ({ match, history }) => {
     const releaseCart = async(d) => {
         // let response = await checkoutCart(localStorage.getItem('userId'));
         const id = localStorage.getItem('userId');
-        axios.post(`http://localhost:7000/cart/remove/${id}`,d,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
+        axios.post(`http://18.205.236.51:7000/cart/remove/${id}`,d,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             // setData(res.data[0].products) 
             // console.log(res.data[0].products, "{{}}")
         });
