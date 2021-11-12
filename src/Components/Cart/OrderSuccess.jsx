@@ -28,7 +28,7 @@ const OrderSuccess = ({sessionId}) => {
 
     useEffect(()=>{
         const userId = localStorage.getItem('userId');
-        axios.post(`http://18.205.236.51:7000/payment/orderupdate/${userId}?sessionId=${sessionId}`).then(res=>console.log(res.data))
+        axios.post(`https://fcs.myonlineedu.in:7000/payment/orderupdate/${userId}?sessionId=${sessionId}`).then(res=>console.log(res.data))
         setTimeout(() => setRedirect(true), 5000)
     }, [])
 

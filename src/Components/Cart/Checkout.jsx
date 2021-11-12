@@ -68,15 +68,15 @@ const Checkout = ({ match, history, setSessionId }) => {
 
     React.useEffect(()=>{
         const id = localStorage.getItem('userId');
-        // axios.get(`http://18.205.236.51:7000/cart/checkout/${id}`)
-        // axios.get(`http://18.205.236.51:7000/cart/checkout/${id}`)
-        // axios.get(`http://18.205.236.51:7000/cart/checkout/${id}`)
-        axios.get(`http://18.205.236.51:7000/cart/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
+        // axios.get(`https://fcs.myonlineedu.in:7000/cart/checkout/${id}`)
+        // axios.get(`https://fcs.myonlineedu.in:7000/cart/checkout/${id}`)
+        // axios.get(`https://fcs.myonlineedu.in:7000/cart/checkout/${id}`)
+        axios.get(`https://fcs.myonlineedu.in:7000/cart/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             setData(res.data[0].products) 
             console.log(res)
             // console.log(res.data[0].products, "{{}}")
         });
-        axios.get(`http://18.205.236.51:7000/address/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
+        axios.get(`https://fcs.myonlineedu.in:7000/address/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             console.log(res)
             setAddress(res.data)
         });
