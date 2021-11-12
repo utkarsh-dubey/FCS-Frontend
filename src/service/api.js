@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://fcs.myonlineedu.in:7000';
+const url = 'http://192.168.2.251:7000';
 
 export const authenticateLogin = async (user) => {
     try {
