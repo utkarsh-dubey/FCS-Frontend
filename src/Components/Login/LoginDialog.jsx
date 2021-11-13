@@ -140,7 +140,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             localStorage.setItem("auth_token",response.data.auth_token);
             localStorage.setItem("firstName",response.data.user.firstName);
             localStorage.setItem("userId", response.data.user._id);
-            localStorage.setItem("isAdmin", response.data.user.isAdmin);
+            // localStorage.setItem("isAdmin", response.data.user.isAdmin);
 
             setAccount(response.data.user.firstName);
         }
