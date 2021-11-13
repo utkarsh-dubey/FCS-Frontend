@@ -168,7 +168,7 @@ const CustomButtons = () => {
             Become Seller
           </Typography>
         </Link> }
-        {isAdmin && (
+        
           <Link >
             <Typography id="basic-button"
         aria-controls="basic-menu"
@@ -178,8 +178,8 @@ const CustomButtons = () => {
               Admin
             </Typography>
           </Link>
-        ) }
-
+        
+{isAdmin ? (
 <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -201,7 +201,24 @@ const CustomButtons = () => {
         {/* <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
         <MenuItem onClick={handleCloseMenu}>Logout</MenuItem> */}
       </Menu>
-
+        ): 
+        <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={openMenu}
+        onClose={handleCloseMenu}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+          
+          <MenuItem >Please Mail Your Cozmolane Id to fcsprojectshare@gmail.com to gain admin access</MenuItem>
+          
+         
+        {/* <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
+        <MenuItem onClick={handleCloseMenu}>Logout</MenuItem> */}
+      </Menu>
+        }
         <Link to="/cart" className={classes.container}>
           {/* <Badge badgeContent={cartItems?.length} color="secondary"> */}
             <ShoppingCart />
