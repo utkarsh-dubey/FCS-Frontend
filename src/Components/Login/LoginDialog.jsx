@@ -143,6 +143,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
             // localStorage.setItem("isAdmin", response.data.user.isAdmin);
 
             setAccount(response.data.user.firstName);
+            window.location.reload();
         }
     }
 

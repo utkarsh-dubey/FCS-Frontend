@@ -69,7 +69,10 @@ const Products = ({text, setText}) => {
 
 
     const trail = products.map((t) => {
+
+      if(t.isAllowed){
       return (
+        
         <Grid item xs={4}>
 
         <Link to={`product/${t._id}`} style={{ textDecoration: "none" }}>
@@ -96,6 +99,10 @@ const Products = ({text, setText}) => {
         </Link>
         </Grid>
       );
+      }
+      else{
+        return;
+      }
     });
     return <Grid
     container

@@ -103,7 +103,9 @@ const ItemDetail = () => {
 
     axios.post(`${url}/product/share/${userkiid}`, {
       productId: id, email: email
-    },{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data)})
+    },{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data)}).then((okay)=>{
+      window.alert("Product shared to the email id provided");
+    });
   }
   return (
     <Paper style={{ textAlign: " center", maxWidth: "800px", border: '1px red', height: '500px' }}>
