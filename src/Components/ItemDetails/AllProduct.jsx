@@ -22,7 +22,7 @@ const AllProduct = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
     useEffect(()=>{
-        axios.get(`http://192.168.2.251:7000/product`).then(res=>{setMainData(res.data)});
+        axios.get(`https://192.168.2.251:7000/product`).then(res=>{setMainData(res.data)});
     }, [])
 
     const [limit, setLimit] = useState(10);
