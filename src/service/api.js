@@ -32,7 +32,7 @@ export const getProducts = async (word) => {
     } catch (error) {
         
         console.log('Error while getting products response', error);
-        if (window.confirm('Please click OK and allow unsecure to run the website')) 
+        if (window.confirm('Please click OK and allow unsecure to run the website. Allow pop-ups if not redirected automatically!')) 
             {
             window.open('https://192.168.2.251:7000/')
             if (window.confirm(' Did you proceed unsafe?.. Press OK to continue')) 
