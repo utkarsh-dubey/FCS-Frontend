@@ -28,8 +28,11 @@ const OrderSuccess = ({sessionId}) => {
 
     useEffect(()=>{
         const userId = localStorage.getItem('userId');
-        axios.post(`https://192.168.2.251:7000/payment/orderupdate/${userId}?sessionId=${sessionId}`)
-        setTimeout(() => setRedirect(true), 5000)
+        axios.post(`https://192.168.2.251:7000/payment/orderupdate/${userId}?sessionId=${localStorage.getItem("sessionId")}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((okay)=>{
+            localStorage.removeItem("sessionId");
+        });
+        setTimeout(() => setRedirect(true), 5000);
+        
     }, [])
 
     

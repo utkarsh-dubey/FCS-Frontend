@@ -86,7 +86,8 @@ const Checkout = ({ match, history, setSessionId }) => {
         // if(!response) return;
         // handleClose();
         setSessionId(response.sessionId)
-        window.location.href = response.url
+        localStorage.setItem("sessionId",response.sessionId);
+        window.location.href = response.url;
         // console.log(response);
         // setAccount(signup.firstname);
     }
