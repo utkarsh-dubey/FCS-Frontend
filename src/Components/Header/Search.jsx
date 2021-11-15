@@ -98,7 +98,7 @@ const Search = ({text, setText}) => {
             {
               textBox &&
             
-            <Link to='/products'>
+            <Link to='/product'>
             
             <div className={classes.searchIcon} >
               <SearchIcon onClick={()=>searchDialog()}/>

@@ -110,7 +110,11 @@ const CustomButtons = () => {
     if (isSeller) {
     //   navigate('/add/product')
     } else {
-      handleOpen();
+      if(localStorage.getItem('userid')){
+        handleOpen();
+      }else{
+        window.alert("Kindly login");
+      }
     }
   };
 
