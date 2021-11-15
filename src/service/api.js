@@ -1,7 +1,7 @@
 import { WifiTetheringErrorRoundedTwoTone } from '@mui/icons-material';
 import axios from 'axios';
 
-const url = '';
+const url = 'https://192.168.2.251:7000';
 
 export const authenticateLogin = async (user) => {
     try {
