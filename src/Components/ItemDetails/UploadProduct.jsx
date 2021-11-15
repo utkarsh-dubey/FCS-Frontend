@@ -22,7 +22,7 @@ const UploadProduct = ({setPdfid}) => {
   const [page, setPage] = useState(0);
     React.useEffect(()=>{
         const userId = localStorage.getItem("userId");
-        axios.get(`https://192.168.2.251:7000/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data)})
+        axios.get(`/pdf/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);setMainData(res.data)})
     }, [])
 
     const changeHandler = (event) => {
@@ -37,7 +37,7 @@ const UploadProduct = ({setPdfid}) => {
         const userId = localStorage.getItem("userId");
         formData.append("pdf", pdfhere);
         
-        axios.post(`https://192.168.2.251:7000/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);window.alert("PDF uploaded")})
+        axios.post(`/product/pdfupload/${userId}`, formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{console.log(res.data);window.alert("PDF uploaded")})
     }
     const handleLimitChange = (event) => {
         setLimit(event.target.value);
