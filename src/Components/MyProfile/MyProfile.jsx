@@ -39,7 +39,7 @@ const MyProfile = () => {
         var userfirstname = localStorage.getItem("firstName");
         // console.log(userfirstname);
         axios
-          .get(`/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+          .get(`https://192.168.2.251:7000/user/user/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
           .then((res) => {console.log(res.data);
                         setFirstName(res.data.firstName);
                         setLastName(res.data.lastName);
@@ -68,7 +68,7 @@ const MyProfile = () => {
               panNumber: panNumber,
               phoneNumber: phoneNumber
           }
-          axios.post(`/user/update/${userId}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data));
+          axios.post(`https://192.168.2.251:7000/user/update/${userId}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>console.log(res.data));
       }
 
     return (
