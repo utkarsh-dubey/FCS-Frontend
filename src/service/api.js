@@ -1,7 +1,7 @@
 import { WifiTetheringErrorRoundedTwoTone } from '@mui/icons-material';
 import axios from 'axios';
 
-const url = 'https://192.168.2.251:7000';
+const url = '';
 
 export const authenticateLogin = async (user) => {
     try {
@@ -46,11 +46,20 @@ export const getProducts = async (word) => {
 }
 
 export const addItemToCart= async (item) => {
-    try {
-        return await axios.post(`${url}/cart/add`, item,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
-    } catch (error) {
-        console.log('error while calling Add to Cart API: ', error);
-    }
+    // try {
+    //     return await 
+    // } catch (error) {
+    //     console.log('error while calling Add to Cart API: ', error);
+    // }
+
+
+    axios.post(`${url}/cart/add`, item,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((ok)=>{
+        window.alert("Item added to cart");
+        return;
+      }).catch((err)=>{
+        window.alert("Item not added to cart, Kindly login if not logged in already");
+        return;
+      });
 }
 // export const removeItemFromCart= async (item) => {
 //     try {

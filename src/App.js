@@ -37,18 +37,18 @@ function App() {
               <Route exact path="/cart" component={Cart} />
               {/* <Route exact path= '/product' render={()=<Products  />} /> */}
               <Route
-                path="/products"
+                exact path="/product"
                 component={() => <Products text={text} setText={setText} />}
               />
-              <Route exact path="/upload/product" component={() => <UploadProduct setPdfid={setPdfid} /> }/>
-              <Route exact path="/product/form" component={() => <AddProduct pdfid={pdfid} /> } />
-              <Route exact path="/product/:id" component={ItemDetail} />
+              <Route exact path="/uploadproduct" component={() => <UploadProduct setPdfid={setPdfid} /> }/>
+              <Route  path="/product/form" component={() => <AddProduct pdfid={pdfid} /> } />
+              <Route  path="/product/:id" component={ItemDetail} />
               <Route exact path="/checkout" component={() => <Checkout setSessionId={setSessionId} /> } />
               <Route exact path="/orderfailure" component={OrderFailure} />
               <Route exact path="/ordersuccess" component={() => <OrderSuccess sessionId={sessionId} /> } />
-              <Route exact path="/admin/user/all" component={AllUser} />
-              <Route exact path="/admin/user/product" component={AllProduct} />
-              <Route exact path="/admin/user/pdf" component={AllPdf} />
+              <Route exact path="/alluser" component={AllUser} />
+              <Route exact path="/allproduct" component={AllProduct} />
+              <Route exact path="/allpdf" component={AllPdf} />
               {/* <Route exact path="/admin" component={Admin} /> */}
               <Route exact path="/myProfile" component={MyProfile} />
 

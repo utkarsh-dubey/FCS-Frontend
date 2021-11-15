@@ -151,9 +151,9 @@ const CustomButtons = () => {
             </Button>
           </Link>
         )}
-        {isSeller ? <Link to="/upload/product">
+        {isSeller ? <Link to="/uploadproduct">
           <Typography
-            // to="/upload/product"
+            // to="/uploadproduct"
             // onClick={handleClick}
             style={{ marginTop: 2 }}
           >
@@ -161,7 +161,7 @@ const CustomButtons = () => {
           </Typography>
         </Link> : <Link>
           <Typography
-            // to="/upload/product"
+            // to="/uploadproduct"
             onClick={handleClick}
             style={{ marginTop: 2 }}
           >
@@ -189,13 +189,13 @@ const CustomButtons = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-          <Link to="/admin/user/all" > 
+          <Link to="/alluser" > 
           <MenuItem onClick={handleCloseMenu}>See User</MenuItem>
           </Link>
-          <Link to="/admin/user/product">
+          <Link to="/allproduct">
           <MenuItem onClick={handleCloseMenu}>See Product</MenuItem>
           </Link>
-          <Link to="/admin/user/pdf" >
+          <Link to="/allpdf" >
           <MenuItem onClick={handleCloseMenu}>See Pdf</MenuItem>
           </Link>
         {/* <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
@@ -241,7 +241,7 @@ const CustomButtons = () => {
         <TextField id="standard-basic" label="PAN Number" value={panNumber} onChange={(e)=>setPanNumber(e.target.value)} variant="standard"  />
         <TextField id="standard-basic" label="GST Number" value={gstNumber} onChange={(e)=>setGstNumber(e.target.value)} variant="standard" />
         
-        <Link to="/upload/product" className={classes.container}>
+        <Link to="/uploadproduct" className={classes.container}>
         <Button align ='center' onClick={handleSubmit}><h2>Submit</h2></Button>
         </Link>
         </Box>

@@ -53,7 +53,7 @@ const UploadProduct = ({setPdfid}) => {
             <Typography>Add Your Pdf Here</Typography>
             <input accept="application/pdf" style={{marginTop:'55px'}} type="file" name="file" onChange={changeHandler} />
             
-            <Link to="/upload/product" >
+            <Link to="/uploadproduct" >
             <Button onClick={handleSubmit} >Submit</Button>
             </Link>
 			<div>

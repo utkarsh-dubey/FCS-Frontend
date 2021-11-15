@@ -26,6 +26,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Select, FormControl, InputLabel, MenuItem, TextField } from "@mui/material";
+import { LaptopWindows } from "@material-ui/icons";
 
 const useStyle = makeStyles({
   select: {
@@ -82,7 +83,7 @@ const ItemDetail = () => {
       quantity: quantity,
       productId: itemDetail._id,
     };
-    window.alert("Item added to cart")
+    
     // payload.userId = ;
     // payload.productId = ;
     // payload.quantity = ;
