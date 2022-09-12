@@ -37,7 +37,7 @@ const AllPdf = () => {
   const handleClose = () => setOpen(false);
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    axios.get(`http://54.85.12.94:7000/pdf/all/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((res) => {
+    axios.get(`https://54.85.12.94:7000/pdf/all/${userId}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then((res) => {
       setMainData(res.data);
       // console.log(res.data);
     });
@@ -52,7 +52,7 @@ const AllPdf = () => {
   const handleApprove = (id) => {
     const userId = localStorage.getItem("userId");
     axios
-      .post(`http://54.85.12.94:7000/admin/approve/${userId}?pdfId=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+      .post(`https://54.85.12.94:7000/admin/approve/${userId}?pdfId=${id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {
         // console.log(res.data);
       });
@@ -60,7 +60,7 @@ const AllPdf = () => {
   const handleReject = (id) => {
     const userId = localStorage.getItem("userId");
     axios
-      .post(`http://54.85.12.94:7000/admin/reject/${userId}?pdfId=${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
+      .post(`https://54.85.12.94:7000/admin/reject/${userId}?pdfId=${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}})
       .then((res) => {
         // console.log(res.data);
       });

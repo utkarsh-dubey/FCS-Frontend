@@ -54,7 +54,7 @@ const cartInitialValues = {
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const url = 'http://54.85.12.94:7000';
+  const url = 'https://54.85.12.94:7000';
 
   // console.log(id);
   const [itemDetail, setItemDetail] = useState([]);

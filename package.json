@@ -43,7 +43,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://54.85.12.94:7000",
+  "proxy": "https://54.85.12.94:7000",
   "browserslist": {
     "production": [
       ">0.2%",
