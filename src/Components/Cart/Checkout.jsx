@@ -68,15 +68,15 @@ const Checkout = ({ match, history, setSessionId }) => {
 
     React.useEffect(()=>{
         const id = localStorage.getItem('userId');
-        // axios.get(`https://192.168.2.251:7000/cart/checkout/${id}`)
-        // axios.get(`https://192.168.2.251:7000/cart/checkout/${id}`)
-        // axios.get(`https://192.168.2.251:7000/cart/checkout/${id}`)
-        axios.get(`https://192.168.2.251:7000/cart/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
+        // axios.get(`http://54.85.12.94:7000/cart/checkout/${id}`)
+        // axios.get(`http://54.85.12.94:7000/cart/checkout/${id}`)
+        // axios.get(`http://54.85.12.94:7000/cart/checkout/${id}`)
+        axios.get(`http://54.85.12.94:7000/cart/checkout/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             setData(res.data[0].products) 
             // console.log(res)
             // console.log(res.data[0].products, "{{}}")
         });
-        axios.get(`https://192.168.2.251:7000/address/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
+        axios.get(`http://54.85.12.94:7000/address/${id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{
             console.log(res)
             setAddress(res.data)
         });

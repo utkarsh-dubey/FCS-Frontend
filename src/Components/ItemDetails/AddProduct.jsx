@@ -26,7 +26,7 @@ const AddProduct = ({pdfid}) => {
         // console.log(pic)
         pic.map((p, i)=>formData.append('pic'+i, p))
         // formData.append('pic', pic);
-        axios.post('https://192.168.2.251:7000/product/imageupload', formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{setImages(res.data.links);window.alert("Images uploaded")});
+        axios.post('http://54.85.12.94:7000/product/imageupload', formData,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{setImages(res.data.links);window.alert("Images uploaded")});
     }
 
     
@@ -42,7 +42,7 @@ const AddProduct = ({pdfid}) => {
     category,
     images: images
         }
-        axios.post(`https://192.168.2.251:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{window.alert("Product created successfully")})
+        axios.post(`http://54.85.12.94:7000/product/add/${userId}?pdfId=${pdfid}`, payload,{headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}`}}).then(res=>{window.alert("Product created successfully")})
     }
 
     return (
